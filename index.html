@@ -7,7 +7,7 @@ nav: home
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AAAAA Lab — advanced, agentic, adaptive, aspiring and autonomous research.">
+  <meta name="description" content="AAAAA Lab — advanced, analytical, adaptive, adventurous and aspiring research.">
   <meta name="theme-color" content="#F2F0E9">
   <title>AAAAA Lab</title>
   {% include head-icons.html %}
@@ -17,19 +17,7 @@ nav: home
   <script src="assets/js/site.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header">
-    <div class="site-header__inner">
-      <div class="site-brand"><a class="wordmark" href="index.html" aria-label="AAAAA Lab home">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button>
-      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="people/index.html">People</a>
-        <a href="research/index.html">Research</a>
-        <a href="publication/index.html">Publication</a>
-      </nav>
-    </div>
-  </header>
+  {% include site-header.html %}
 
   <main class="page-shell" id="main-content">
     <section class="hero" aria-labelledby="home-title">
@@ -37,7 +25,7 @@ nav: home
         <div class="hero__copy reveal" aria-label="AAAAA Lab. Hover, focus, or tap to reveal the lab overview." data-hero-reveal tabindex="0">
           <p class="eyebrow">Intelligent systems · Human ambition</p>
           <h1 id="home-title">AAAAA <span>LAB</span></h1>
-          <p class="hero__expansion" id="aaaa-expansion">Advanced · Agentic · Adaptive · Aspiring · Autonomous</p>
+          <p class="hero__expansion" id="aaaa-expansion"><span class="hero__expansion-inner">Advanced · Analytical · Adaptive · Adventurous · Aspiring</span></p>
         </div>
         <aside class="hero__overview" aria-labelledby="overview-title">
           <h2 id="overview-title">Overview</h2>
@@ -50,27 +38,38 @@ nav: home
       <div class="section-header reveal">
         <p class="section-kicker">01 / Latest work</p>
         <h2 class="section-title" id="latest-publication-title">Latest Publication</h2>
-        <a class="section-link" href="publication/index.html">View all <span aria-hidden="true">↗</span></a>
+        <a class="section-link" href="{{ '/publication/' | relative_url }}">View all <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="publication-ticker reveal" role="region" aria-label="Scrolling latest publications">
+      {% include project-sources.html %}
+      {% assign ticker_items = latest_publications %}
+      {% if ticker_items.size > 0 %}
+      {% assign ticker_repeats = 8 %}
+      {% if ticker_items.size >= 8 %}
+        {% assign ticker_repeats = 1 %}
+      {% elsif ticker_items.size >= 4 %}
+        {% assign ticker_repeats = 2 %}
+      {% elsif ticker_items.size == 3 %}
+        {% assign ticker_repeats = 3 %}
+      {% elsif ticker_items.size == 2 %}
+        {% assign ticker_repeats = 4 %}
+      {% endif %}
+      <div class="publication-ticker reveal" role="region" aria-label="Scrolling latest publications" data-publication-ticker>
         <div class="publication-ticker__track">
-          <a class="publication-card" href="publication/project-template/index.html">
-            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
-            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
-          </a>
-          <a class="publication-card" href="publication/project-template/index.html">
-            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
-            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
-          </a>
-          <a class="publication-card" href="publication/project-template/index.html">
-            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
-            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
-          </a>
-          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
-          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
-          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
+          {% for copy in (1..2) %}
+          <div class="publication-ticker__group"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+            {% for pad in (1..ticker_repeats) %}
+            {% for project in ticker_items %}
+            <a class="publication-card" href="{{ project.url | relative_url }}"{% if copy == 2 or pad > 1 %} aria-hidden="true" tabindex="-1"{% endif %}>
+              <span class="publication-card__year">{{ project.year | default: 'YYYY' }}</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
+              <h3>{{ project.title }}</h3>{% if project.venue %}<p>{{ project.venue }}</p>{% endif %}
+            </a>
+            {% endfor %}
+            {% endfor %}
+          </div>
+          {% endfor %}
         </div>
       </div>
+      {% endif %}
     </section>
 
     <section class="section" aria-labelledby="research-area-title">
@@ -101,7 +100,7 @@ nav: home
         <h2 class="section-title" id="people-title">People</h2>
         <a class="section-link" href="people/index.html">Meet the team <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="people-intro reveal">Researchers building advanced, adaptive and autonomous intelligence—together.</p>
+      <p class="people-intro reveal">Researchers building advanced, analytical and adaptive intelligence—together.</p>
       <div class="member-constellation reveal" data-member-constellation aria-label="AAAAA Lab core members">
         <div class="member-constellation__orbit">
           <a class="member-card member-constellation__member member-constellation__member--north" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><div class="member-constellation__identity"><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></div></a>
@@ -121,11 +120,6 @@ nav: home
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__inner">
-      <div><strong>AAAAA LAB</strong><p>Advanced · Agentic · Adaptive · Aspiring · Autonomous</p></div>
-      <nav aria-label="Footer navigation"><a href="people/index.html">People</a><a href="research/index.html">Research</a><a href="publication/index.html">Publication</a></nav>
-    </div>
-  </footer>
+  {% include site-footer.html %}
 </body>
 </html>

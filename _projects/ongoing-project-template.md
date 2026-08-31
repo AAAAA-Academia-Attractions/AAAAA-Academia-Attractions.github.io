@@ -1,15 +1,16 @@
 ---
 title: "[On-going project title]"
-nav: research
+nav: projects
+status: ongoing
 summary: "[A concise description of the active research project.]"
-research_area: "[Research Area Name]"
-research_area_slug: area-template
+research_area: BBO
+research_area_slug: bbo
 members:
   - Member 01
   - Member 02
 keywords:
   - Keyword A
-  - Keyword B
+  - Black-box optimization
 ---
 
 ## Overview
@@ -25,4 +26,3 @@ keywords:
 - [Goal 01]
 - [Goal 02]
 - [Goal 03]
-

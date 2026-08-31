@@ -1,5 +1,5 @@
 title: AAAAA Lab
-description: Advanced · Agentic · Adaptive · Aspiring · Autonomous
+description: Advanced · Analytical · Adaptive · Adventurous · Aspiring
 url: ""
 baseurl: ""
 lang: en
@@ -26,6 +26,7 @@ defaults:
       type: projects
     values:
       layout: ongoing-project
+      nav: projects
 
 exclude:
   - brand-spec.md

@@ -16,5 +16,7 @@
 
 - title: Evaluation
   id: evaluation
-  areas: []
+  areas:
+    - title: Social Deduction
+      slug: social-deduction
 

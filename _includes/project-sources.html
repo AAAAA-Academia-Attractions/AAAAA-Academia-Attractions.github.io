@@ -1,0 +1,3 @@
+{% assign published_projects = site.pages | where: "status", "published" | where: "listed", true | sort: "date" | reverse %}
+{% assign latest_publications = published_projects | limit: 5 %}
+{% assign catalog = site.projects | concat: published_projects %}

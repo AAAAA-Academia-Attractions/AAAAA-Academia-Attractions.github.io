@@ -1,0 +1,124 @@
+---
+layout: null
+nav: projects
+status: published
+listed: true
+date: 2026-05-26
+permalink: /projects/quack/
+title: "QUACK: Questioning, Understanding, and Auditing Communicated Knowledge in Multimodal Social Deduction Agents"
+year: 2026
+summary: "An open-source environment and evaluation framework that audits whether agent language is grounded in what the agent actually perceived and did."
+research_area: Social Deduction
+research_area_slug: social-deduction
+authors:
+  - Ye Yuan
+  - Rui Song
+  - Weien Li
+  - Zeyu Li
+  - Haochen Liu
+  - Xiangyu Kong
+  - Changjiang Han
+  - Yonghan Yang
+  - Zichen Zhao
+  - Zixuan Dong
+  - Fuyuan Lyu
+  - Bowei He
+  - Haolun Wu
+  - Jikun Kang
+  - Xue Liu
+members:
+  - Ye Yuan
+  - Rui Song
+  - Weien Li
+venue: EMNLP 2026 Main Conference
+keywords:
+  - Evaluation
+  - Grounding
+  - Multi-agent
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.summary | escape }}">
+  <title>QUACK — {{ site.title }}</title>
+  {% include head-icons.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  <style>
+    .quack-band { padding: clamp(2.2rem, 4.5vw, 3.75rem) var(--page-x); background: var(--pine); color: var(--paper); }
+    .quack-band h1 { max-width: 46rem; margin-top: 0.7rem; font-family: var(--serif); font-size: clamp(3rem, 7vw, 6rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.92; }
+    .quack-band p { max-width: 40rem; margin-top: 1.15rem; color: rgb(242 240 233 / 82%); font-family: var(--serif); font-size: clamp(1.12rem, 2vw, 1.38rem); line-height: 1.45; }
+    .quack-meta { display: flex; flex-wrap: wrap; gap: 0.55rem 1.35rem; margin-top: 1.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .quack-meta a { text-decoration: underline; text-underline-offset: 0.22rem; }
+    .quack-tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+    .quack-tier { padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.1rem, 2.4vw, 1.85rem); border-right: 1px solid var(--line); }
+    .quack-tier:last-child { border-right: 0; }
+    .quack-tier b { display: block; color: var(--brass); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .quack-tier h2 { margin-top: 0.7rem; font-family: var(--serif); font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 400; letter-spacing: -0.04em; }
+    .quack-tier p { margin-top: 0.75rem; color: rgb(23 28 26 / 72%); }
+    .quack-fails { display: grid; margin: 0 var(--page-x) var(--section-y); grid-template-columns: minmax(12rem, 0.4fr) minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 3rem); padding-top: var(--section-y); }
+    .quack-fails h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.4rem); font-weight: 400; letter-spacing: -0.045em; line-height: 1; }
+    .quack-fails ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .quack-fails li { padding: 1rem 0; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 1.2rem; }
+    .quack-fails small { display: block; margin-top: 0.3rem; color: rgb(23 28 26 / 55%); font-family: var(--sans); font-size: 0.78rem; }
+    @media (max-width: 56rem) {
+      .quack-tiers, .quack-fails { grid-template-columns: 1fr; }
+      .quack-tier { border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  {% include site-header.html %}
+  <main id="main-content">
+    <header class="quack-band">
+      <p class="eyebrow" style="color: var(--sage);">Evaluation · Grounded social agents</p>
+      <h1>QUACK</h1>
+      <p>{{ page.summary }}</p>
+      <p class="quack-meta">
+        <span>{{ page.venue }}</span>
+        <a href="https://arxiv.org/abs/2605.27068" target="_blank" rel="noopener noreferrer">Paper ↗</a>
+        <a href="https://github.com/AAAAA-Academia-Attractions/QUACK" target="_blank" rel="noopener noreferrer">Code ↗</a>
+        <a href="{{ '/research/social-deduction/' | relative_url }}">Research area ↗</a>
+      </p>
+    </header>
+    <section class="quack-tiers" aria-label="Three-tier evaluation">
+      <article class="quack-tier">
+        <b>Tier 01</b>
+        <h2>Outcomes</h2>
+        <p>Win rates and game results remain visible, but they are no longer the only score.</p>
+      </article>
+      <article class="quack-tier">
+        <b>Tier 02</b>
+        <h2>Trajectories</h2>
+        <p>Every episode is replayable from engine logs, tick by tick, for each agent.</p>
+      </article>
+      <article class="quack-tier">
+        <b>Tier 03</b>
+        <h2>Utterances</h2>
+        <p>Each discussion claim is checked against the reconstructed ground-truth path.</p>
+      </article>
+    </section>
+    <section class="quack-fails">
+      <h2>What the audit flags</h2>
+      <ul>
+        <li>Spatial hallucination<small>Claims about rooms or movement that the trajectory does not support.</small></li>
+        <li>Unsupported accusation<small>Naming another agent without grounded evidence.</small></li>
+        <li>Deception collapse<small>A hidden-role strategy that fails to stay consistent over time.</small></li>
+        <li>Language–action inconsistency<small>Saying one thing while the logged actions show another.</small></li>
+      </ul>
+    </section>
+    <section class="section">
+      <div class="prose-grid">
+        <h2>Abstract</h2>
+        <div class="prose-grid__body">
+          <p>Social deduction games test reasoning, deception, and coordination, but most agent environments still score only win rates and stay text-only. QUACK is a multimodal environment in which agents navigate partial views, talk in free-form discussion, and vote under hidden roles.</p>
+          <p>Its Statement Verification Pipeline reconstructs each agent’s trajectory and checks every claim against it. Across three frontier VLMs, even the strongest agent hallucinates 15.1% of verifiable spatial claims and makes more than half of its accusations without grounded evidence. The engine, evaluation framework, toolkit, and logs are public.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include site-footer.html %}
+</body>
+</html>

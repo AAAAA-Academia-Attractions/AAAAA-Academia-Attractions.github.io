@@ -1,21 +1,24 @@
-{% assign project_status = include.project.status | default: 'ongoing' %}
+{% assign project = include.project %}
+{% assign project_status = project.status | default: 'ongoing' %}
 {% if project_status == 'published' %}
-  {% assign project_href = '/publication/' | append: include.project.slug | append: '/' %}
   {% assign status_label = 'Published' %}
 {% else %}
-  {% assign project_href = '/projects/' | append: include.project.slug | append: '/' %}
   {% assign status_label = 'On going' %}
 {% endif %}
-<a class="project-card" href="{{ project_href | relative_url }}" data-status="{{ project_status }}">
+{% assign keyword_text = project.keywords | join: ' ' %}
+{% assign member_text = project.members | join: ' · ' %}
+{% assign author_text = project.authors | join: ' · ' %}
+{% assign search_text = project.title | append: ' ' | append: project.summary | append: ' ' | append: project.research_area | append: ' ' | append: keyword_text | append: ' ' | append: member_text | append: ' ' | append: author_text | append: ' ' | append: project.venue %}
+<a class="project-card" href="{{ project.url | relative_url }}" data-project-card data-status="{{ project_status }}" data-area="{{ project.research_area_slug }}" data-keywords="{{ project.keywords | join: '|' | downcase }}" data-search="{{ search_text | downcase | escape }}">
   <div class="project-card__top">
     <span class="project-status project-status--{{ project_status }}"><i aria-hidden="true"></i>{{ status_label }}</span>
     <span class="project-card__arrow" aria-hidden="true">↗</span>
   </div>
+  {% if project.research_area %}<p class="project-card__area">{{ project.research_area }}</p>{% endif %}
   <div class="keyword-list">
-    {% for keyword in include.project.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}
+    {% for keyword in project.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}
   </div>
-  <h3>{{ include.project.title }}</h3>
-  <p class="project-card__summary">{{ include.project.summary }}</p>
-  <div class="project-card__members"><span>Members</span><p>{{ include.project.members | join: ' · ' }}</p></div>
+  <h3>{{ project.title }}</h3>
+  <p class="project-card__summary">{{ project.summary }}</p>
+  <div class="project-card__members"><span>Members</span><p>{{ member_text | default: author_text | default: '—' }}</p></div>
 </a>
-

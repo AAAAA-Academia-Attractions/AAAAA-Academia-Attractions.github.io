@@ -1,0 +1,95 @@
+---
+layout: null
+nav: projects
+permalink: /projects/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="All research projects at AAAAA Lab.">
+  <title>Projects — AAAAA Lab</title>
+  {% include head-icons.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</head>
+<body>
+  {% include site-header.html %}
+  <main class="page-shell" id="main-content">
+    <header class="page-hero">
+      <div>
+        <p class="eyebrow">Directory</p>
+        <h1 class="page-title">Projects</h1>
+      </div>
+      <p class="page-lead">Every lab project lives here, including work shown under Research and Publication. Filter by area or keyword, or search titles, people and abstracts.</p>
+    </header>
+    <section class="section" aria-label="Project directory">
+      {% include project-sources.html %}
+      {% assign catalog = catalog | sort: "title" %}
+      <div class="project-catalog" data-project-catalog>
+        <div class="project-filters">
+          <label class="project-search-label" for="project-search">Search</label>
+          <input class="project-search" id="project-search" type="search" name="q" placeholder="Search projects" autocomplete="off" data-project-search>
+
+          <dl class="project-filter-groups">
+            <div class="project-filter-row">
+              <dt>Area</dt>
+              <dd class="keyword-list" data-filter-group="area">
+                <button class="project-chip is-active" type="button" data-filter-area="">All</button>
+                {% assign seen_areas = "|" %}
+                {% for project in catalog %}
+                  {% assign area_token = "|" | append: project.research_area_slug | append: "|" %}
+                  {% unless seen_areas contains area_token %}
+                    {% if project.research_area_slug %}
+                      <button class="project-chip" type="button" data-filter-area="{{ project.research_area_slug }}">{{ project.research_area }}</button>
+                      {% assign seen_areas = seen_areas | append: project.research_area_slug | append: "|" %}
+                    {% endif %}
+                  {% endunless %}
+                {% endfor %}
+              </dd>
+            </div>
+            <div class="project-filter-row">
+              <dt>Keyword</dt>
+              <dd class="keyword-list" data-filter-group="keyword">
+                {% assign keyword_blob = "" %}
+                {% for project in catalog %}
+                  {% for keyword in project.keywords %}
+                    {% assign keyword_blob = keyword_blob | append: keyword | append: "||" %}
+                  {% endfor %}
+                {% endfor %}
+                {% assign catalog_keywords = keyword_blob | split: "||" | compact | uniq | sort %}
+                {% for keyword in catalog_keywords %}
+                  {% if keyword != "" %}
+                    <button class="project-chip" type="button" data-filter-keyword="{{ keyword | downcase | escape }}">{{ keyword }}</button>
+                  {% endif %}
+                {% endfor %}
+              </dd>
+            </div>
+            <div class="project-filter-row">
+              <dt>Status</dt>
+              <dd class="keyword-list" data-filter-group="status">
+                <button class="project-chip is-active" type="button" data-filter-status="">All</button>
+                <button class="project-chip" type="button" data-filter-status="ongoing">On going</button>
+                <button class="project-chip" type="button" data-filter-status="published">Published</button>
+              </dd>
+            </div>
+          </dl>
+          <p class="project-catalog__count" data-project-count></p>
+        </div>
+
+        <div class="project-card-grid" data-project-grid>
+          {% for project in catalog %}
+            {% include project-card.html project=project %}
+          {% endfor %}
+        </div>
+        <div class="project-empty-state" data-project-empty hidden>
+          <p>No projects match these filters.</p>
+          <span>Clear the search or choose All to see the full directory.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include site-footer.html %}
+</body>
+</html>

@@ -211,6 +211,147 @@
   document.querySelectorAll("[data-member-constellation]").forEach(initMemberConstellation);
   document.querySelectorAll("[data-member-stack]").forEach(initMemberStack);
 
+  const initProjectCatalog = (root) => {
+    const cards = [...root.querySelectorAll("[data-project-card]")];
+    const searchInput = root.querySelector("[data-project-search]");
+    const countEl = root.querySelector("[data-project-count]");
+    const emptyEl = root.querySelector("[data-project-empty]");
+    const grid = root.querySelector("[data-project-grid]");
+    const params = new URLSearchParams(window.location.search);
+    const state = {
+      q: (params.get("q") || "").trim(),
+      area: params.get("area") || "",
+      status: params.get("status") || "",
+      keywords: (params.get("keyword") || "")
+        .split(",")
+        .map((item) => item.trim().toLowerCase())
+        .filter(Boolean),
+    };
+
+    const setExclusive = (group, attr, value) => {
+      group.querySelectorAll(`[${attr}]`).forEach((chip) => {
+        chip.classList.toggle("is-active", (chip.getAttribute(attr) || "") === value);
+      });
+    };
+
+    const syncChips = () => {
+      const areaGroup = root.querySelector('[data-filter-group="area"]');
+      const statusGroup = root.querySelector('[data-filter-group="status"]');
+      if (areaGroup) setExclusive(areaGroup, "data-filter-area", state.area);
+      if (statusGroup) setExclusive(statusGroup, "data-filter-status", state.status);
+      root.querySelectorAll("[data-filter-keyword]").forEach((chip) => {
+        chip.classList.toggle("is-active", state.keywords.includes(chip.getAttribute("data-filter-keyword") || ""));
+      });
+    };
+
+    const writeUrl = () => {
+      const next = new URLSearchParams();
+      if (state.q) next.set("q", state.q);
+      if (state.area) next.set("area", state.area);
+      if (state.status) next.set("status", state.status);
+      if (state.keywords.length) next.set("keyword", state.keywords.join(","));
+      const query = next.toString();
+      const url = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+      window.history.replaceState({}, "", url);
+    };
+
+    const apply = () => {
+      const query = state.q.toLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const haystack = card.dataset.search || "";
+        const keywords = (card.dataset.keywords || "").split("|").filter(Boolean);
+        const show = (!query || haystack.includes(query))
+          && (!state.area || card.dataset.area === state.area)
+          && (!state.status || card.dataset.status === state.status)
+          && state.keywords.every((keyword) => keywords.includes(keyword));
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      if (countEl) {
+        const total = cards.length;
+        countEl.textContent = visible === total
+          ? `${total} project${total === 1 ? "" : "s"}`
+          : `${visible} of ${total} projects`;
+      }
+      if (emptyEl) emptyEl.hidden = visible !== 0;
+      if (grid) grid.hidden = visible === 0;
+      writeUrl();
+    };
+
+    if (searchInput) {
+      searchInput.value = state.q;
+      searchInput.addEventListener("input", () => {
+        state.q = searchInput.value.trim();
+        apply();
+      });
+    }
+
+    root.querySelectorAll("[data-filter-area]").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const value = chip.getAttribute("data-filter-area") || "";
+        state.area = state.area === value ? "" : value;
+        syncChips();
+        apply();
+      });
+    });
+
+    root.querySelectorAll("[data-filter-status]").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const value = chip.getAttribute("data-filter-status") || "";
+        state.status = state.status === value ? "" : value;
+        syncChips();
+        apply();
+      });
+    });
+
+    root.querySelectorAll("[data-filter-keyword]").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const keyword = chip.getAttribute("data-filter-keyword") || "";
+        state.keywords = state.keywords.includes(keyword)
+          ? state.keywords.filter((item) => item !== keyword)
+          : [...state.keywords, keyword];
+        syncChips();
+        apply();
+      });
+    });
+
+    syncChips();
+    apply();
+  };
+
+  document.querySelectorAll("[data-project-catalog]").forEach(initProjectCatalog);
+
+  const initPublicationTicker = (root) => {
+    const track = root.querySelector(".publication-ticker__track");
+    const group = track?.querySelector(".publication-ticker__group");
+    if (!track || !group || group.children.length === 0) return;
+
+    const seed = [...group.children];
+    while (group.scrollWidth < root.clientWidth && group.children.length < 48) {
+      seed.forEach((node) => {
+        const clone = node.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.tabIndex = -1;
+        group.appendChild(clone);
+      });
+    }
+
+    [...track.querySelectorAll(".publication-ticker__group")].slice(1).forEach((node) => node.remove());
+    const clone = group.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("a").forEach((link) => {
+      link.setAttribute("tabindex", "-1");
+      link.setAttribute("aria-hidden", "true");
+    });
+    track.appendChild(clone);
+    track.style.animationDuration = `${Math.max(36, Math.round(group.scrollWidth / 24))}s`;
+  };
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("[data-publication-ticker]").forEach(initPublicationTicker);
+  }
+
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const observer = new IntersectionObserver((entries) => {

@@ -1,5 +1,6 @@
 ---
 layout: null
+nav: people
 ---
 <!doctype html>
 <html lang="en">
@@ -9,8 +10,7 @@ layout: null
   <link rel="stylesheet" href="../../assets/css/site.css"><script src="../../assets/js/site.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
+  {% include site-header.html %}
   <main class="page-shell" id="main-content"><header class="detail-hero"><div><p class="eyebrow">Member 10</p><h1>[Member name]</h1></div><aside class="detail-hero__aside"><dl><dt>Role</dt><dd>[Role]</dd><dt>Institution</dt><dd>[Institution]</dd><dt>Focus</dt><dd>[Research focus]</dd></dl></aside></header><section class="section"><div class="prose-grid"><h2>Biography</h2><div class="prose-grid__body"><p>[Member 10 biography and personal homepage content.]</p></div></div></section></main>
   <footer class="site-footer"><div class="site-footer__inner"><div><strong>AAAAA LAB</strong><p>Member 10 homepage</p></div><nav aria-label="Footer navigation"><a href="../index.html">Back to People</a><a href="../../index.html">Lab home</a></nav></div></footer>
 </body></html>

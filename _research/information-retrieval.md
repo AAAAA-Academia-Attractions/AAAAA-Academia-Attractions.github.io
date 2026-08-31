@@ -5,7 +5,6 @@ parent_area: Algorithm
 summary: "[Add a concise introduction to the Information Retrieval research direction.]"
 lead: "[Lead member]"
 keywords: []
-projects: []
 ---
 
 ## Introduction

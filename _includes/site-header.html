@@ -3,12 +3,6 @@
   <div class="site-header__inner">
     <div class="site-brand"><a class="wordmark" href="{{ '/index.html' | relative_url }}" aria-label="AAAAA Lab home">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button>
-    <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
-      <a href="{{ '/index.html' | relative_url }}"{% if page.nav == 'home' %} aria-current="page"{% endif %}>Home</a>
-      <a href="{{ '/people/' | relative_url }}"{% if page.nav == 'people' %} aria-current="page"{% endif %}>People</a>
-      <a href="{{ '/research/' | relative_url }}"{% if page.nav == 'research' %} aria-current="page"{% endif %}>Research</a>
-      <a href="{{ '/publication/' | relative_url }}"{% if page.nav == 'publication' %} aria-current="page"{% endif %}>Publication</a>
-    </nav>
+    {% include site-nav.html %}
   </div>
 </header>
-

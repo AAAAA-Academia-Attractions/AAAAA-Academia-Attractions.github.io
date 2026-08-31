@@ -5,7 +5,7 @@ This file documents the shared visual system used by the public HTML pages. It i
 ## Identity
 
 - Wordmark: the supplied `AAAAA LAB` typographic mark from the reference HTML.
-- Full line: `Advanced · Agentic · Adaptive · Aspiring · Autonomous`.
+- Full line: `Advanced · Analytical · Adaptive · Adventurous · Aspiring`.
 - Tone: academic, editorial, precise, and quietly experimental.
 
 ## Palette
@@ -31,8 +31,10 @@ This file documents the shared visual system used by the public HTML pages. It i
 
 ## Page rules
 
-- Shared navigation order: Home, People, Research, Publication.
+- Shared navigation order: Home, People, Research, Publication, Projects.
 - Main site pages use shared files under `assets/`.
-- Every member and publication gets its own folder and `index.html`.
-- Research Areas and on-going projects use Markdown collections with shared Jekyll layouts; Jekyll generates their final HTML folders.
+- Every member page gets its own folder and `index.html`.
+- Research Areas use Markdown collections with shared Jekyll layouts; Jekyll generates their final HTML folders.
+- On-going projects use the shared Markdown template in `_projects/` and are listed under Projects.
+- Published projects are independent HTML pages in `projects/<slug>/` and may use any layout, CSS, or interaction. Only their YAML front matter is read by the Projects / Research / Publication directories.
 - Individual pages may add local CSS and JavaScript after the shared stylesheet without changing the main site.

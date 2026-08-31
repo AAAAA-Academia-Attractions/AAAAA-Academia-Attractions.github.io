@@ -1,56 +1,173 @@
 # AAAAA Lab website
 
-GitHub Pages website for AAAAA Lab.
+GitHub Pages site for AAAAA Lab: **Advanced · Analytical · Adaptive · Adventurous · Aspiring**.
+
+Shared look and feel lives in `assets/css/site.css`, `assets/js/site.js`, and `_includes/`. Visual tokens are documented in `brand-spec.md`.
 
 ## Content model
 
-- Main site, member pages, and Publication project pages are independent HTML files.
-- Main Research Areas and their sub-area links are defined in `_data/research_hierarchy.yml`.
-- Research sub-areas are Markdown files in `_research/` and share `_layouts/research-area.html`.
-- On-going research projects are Markdown files in `_projects/` and share `_layouts/ongoing-project.html`.
-- Published project cards link directly to the matching independent HTML page under `publication/`.
-
-The hierarchy is:
-
 ```text
-Main area → Sub-area Markdown page → Related projects
+Nav: Home · People · Research · Publication · Projects
+
+Research hierarchy:  main area  →  sub-area Markdown  →  projects
+Projects:            on-going `_projects/*.md`  +  published `projects/<slug>/index.html`
 ```
 
-Home shows five core members. `people/index.html` is the larger directory and currently reserves ten independent member folders.
+- **On-going projects** use the shared Markdown layout and URLs `/projects/<slug>/`.
+- **Published projects** are free HTML. YAML is only for directories (Projects, Research, Publication, homepage ticker).
+- Research area pages pull related work by `research_area_slug`.
+- Publication and the homepage ticker list pages with `status: published` and `listed: true`, newest `date` first.
 
-## Add a Research Area
+## Update each section
 
-1. Add the main area and sub-area slug to `_data/research_hierarchy.yml`.
-2. Copy `_research/area-template.md` to `_research/your-sub-area-slug.md`.
-3. Replace the title, parent area, summary, lead, keywords, introduction, and current direction.
-4. Add project entries under `projects`.
+Most page *introductions* are a short lead on that HTML page. Lists under them are generated from YAML — edit the source project or member, not the listing page.
 
-Each project card accepts:
+### Home — `index.html`
+
+| What you see | Where to edit |
+| --- | --- |
+| Eyebrow, `AAAAA LAB` title, five-A line | `.hero__copy` |
+| Overview paragraph (hover / focus / tap) | `.hero__overview p` |
+| Latest Publication ticker | Automatic: newest 5 published pages. Cards show **year, title, venue** (no authors). |
+| Research Area accordion | Automatic from `_data/research_hierarchy.yml` |
+| People sentence | `.people-intro` |
+| Five rotating portraits | The five `.member-card` links inside `.member-constellation`. Keep name, role, institution, and focus in `.member-card__meta` so the hover panel can copy them. |
+
+To change ticker copy, edit the published project’s YAML (`title`, `year`, `venue`, `date`). To hide a paper from Home and Publication, set `listed: false`.
+
+### People — `people/index.html`
+
+| What you see | Where to edit |
+| --- | --- |
+| Page title and lead | `.page-hero` (`h1`, `.page-lead`) |
+| Honeycomb of ten members | The `member-card` loop. Slot `1` is Ye Yuan (external site). Slots `2`–`10` are `people/member-XX/`. |
+
+Update a member in **three** places when they appear on Home as well:
+
+1. `people/index.html` — directory hex, name, and meta
+2. `index.html` — homepage constellation card (core five only)
+3. `people/member-XX/index.html` — personal homepage
+
+Copy `people/member-template/index.html` into an empty `member-XX` folder. Put portraits in `assets/images/people/`. Member pages may add their own CSS, JS, and tabs after the shared assets.
+
+### Research — `research/index.html` and `_research/`
+
+| What you see | Where to edit |
+| --- | --- |
+| Directory title and lead | `research/index.html` → `.page-hero` |
+| Main areas (Algorithm, Agent, Evaluation) and sub-area links | `_data/research_hierarchy.yml` |
+| Sub-area introduction | `_research/<slug>.md` |
+
+A sub-area page is Markdown. Front matter is the short intro; the body is the long introduction:
 
 ```yaml
-- title: Project title
-  slug: project-folder-name
-  status: ongoing # or published
-  keywords:
-    - Keyword one
-    - Keyword two
-  summary: Short project introduction.
-  members:
-    - Member name
+title: Social Deduction
+nav: research
+parent_area: Evaluation
+summary: One or two sentences shown under the title.
+lead: Member name
+keywords:
+  - Keyword
 ```
 
-Routing is automatic:
+```markdown
+## Research introduction
+## Current direction
+```
 
-- `status: ongoing` links to `/projects/<slug>/`.
-- `status: published` links to `/publication/<slug>/`.
+Related projects appear when an on-going or published project uses the same `research_area_slug` as the file name (`social-deduction.md` → `research_area_slug: social-deduction`).
+
+**Add a sub-area**
+
+1. Add it under the right main area in `_data/research_hierarchy.yml`.
+2. Copy `_research/area-template.md` to `_research/your-slug.md`.
+3. Fill title, parent, summary, lead, keywords, and the two Markdown sections.
+
+### Publication — `publication/index.html`
+
+| What you see | Where to edit |
+| --- | --- |
+| Directory title and lead | `.page-hero` |
+| Paper cards | Automatic from published YAML. Cards show authors (or members) and venue. |
+
+There is no separate publication database. Add or edit `projects/<slug>/index.html` instead.
+
+### Projects — `projects/index.html`
+
+| What you see | Where to edit |
+| --- | --- |
+| Directory title and lead | `.page-hero` |
+| Filters and cards | Automatic from `_projects/` plus published HTML |
+
+Search matches title, summary, area, keywords, members, authors, and venue.
+
+### Shared chrome
+
+| What you see | Where to edit |
+| --- | --- |
+| Header wordmark | `_includes/site-mark.html`, logo at `assets/images/brand/` |
+| GitHub / Hugging Face | `_includes/site-presence.html` |
+| Nav labels and order | `_includes/site-nav.html` |
+| Footer line | `_includes/site-footer.html` |
+| Browser tab icon | `_includes/head-icons.html` and `assets/images/brand/favicon.png` (transparent PNG) |
+
+Site-wide five-A wording also appears in `_config.yml` (`description`) and the footer.
 
 ## Add an on-going project
 
-Copy `_projects/ongoing-project-template.md` to `_projects/your-project-slug.md`. Keep the standard `Overview`, `Motivation`, and `Goals` headings so all active projects have a consistent structure.
+Copy `_projects/ongoing-project-template.md` to `_projects/your-slug.md`. Keep the `Overview`, `Motivation`, and `Goals` headings.
+
+```yaml
+title: Project title
+status: ongoing
+research_area: BBO
+research_area_slug: bbo
+keywords:
+  - Keyword
+members:
+  - Member name
+summary: Short introduction used on cards.
+```
+
+The page is generated at `/projects/your-slug/`.
 
 ## Add a published project
 
-Create `publication/your-project-slug/index.html`. The folder name must match the `slug` used by its Research Area project card. Publication pages may load their own CSS, JavaScript, Canvas, WebGL, video, or other interactive assets.
+Create `projects/your-slug/index.html`. `projects/project-template/` is a starting point (`listed: false`, so it stays out of catalogs).
+
+Directories only read the YAML. The HTML body can be anything: custom CSS, Canvas, WebGL, video, or a layout that does not look like the rest of the site.
+
+```yaml
+layout: null
+nav: projects
+status: published
+listed: true
+date: 2026-05-26
+permalink: /projects/your-slug/
+title: Paper or project title
+year: 2026
+summary: Short introduction used on project cards.
+research_area: Social Deduction
+research_area_slug: social-deduction
+authors:
+  - First Author
+members:
+  - Lab member on the card
+venue: EMNLP 2026 Main Conference
+keywords:
+  - Keyword
+```
+
+| Field | Used by |
+| --- | --- |
+| `listed: true` | Home ticker, Publication, Projects catalog, Research related work |
+| `date` | Sort order (newest first) |
+| `year` | Card year label |
+| `venue` | Ticker (venue only) and Publication cards |
+| `authors` / `members` | Publication cards and project cards |
+| `research_area_slug` | Research area page and Projects area filter |
+
+Set `listed: false` for drafts and templates.
 
 ## Local development
 
@@ -58,12 +175,21 @@ Ruby 3.4 and Bundler are required.
 
 ```powershell
 bundle install
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --port 4000
 ```
 
 Open `http://127.0.0.1:4000/`.
 
+On Windows the file watcher often misses CSS and includes. If a change does not appear, rebuild:
+
+```powershell
+bundle exec jekyll build
+```
+
+Then refresh the browser (hard-refresh if the tab icon looks stale).
+
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/pages.yml`. The workflow builds the Jekyll source and deploys `_site` to GitHub Pages.
-Website for AAAAA
+Push to `main` to run `.github/workflows/pages.yml`. The workflow builds the Jekyll source and deploys `_site` to GitHub Pages.
+
+Do not commit `_site/`, `.agents/`, or `skills-lock.json`.

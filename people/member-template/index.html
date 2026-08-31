@@ -1,5 +1,6 @@
 ---
 layout: null
+nav: people
 ---
 <!doctype html>
 <html lang="en">
@@ -15,8 +16,7 @@ layout: null
   <!-- Add member-specific JavaScript after the shared script when needed. -->
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
+  {% include site-header.html %}
   <main class="page-shell" id="main-content">
     <header class="detail-hero">
       <div><p class="eyebrow">Member homepage template</p><h1>[Member name]</h1></div>
