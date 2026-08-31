@@ -2,16 +2,18 @@
 title: BBO
 nav: research
 parent_area: Algorithm
-summary: "[Add a concise introduction to the BBO research direction.]"
-lead: "[Lead member]"
-keywords: []
+summary: "Finding high-scoring designs from a static dataset, without an online oracle, while staying on the support of the observed data."
+lead: Yonghan Yang
+keywords:
+  - Offline BBO
+  - Diffusion surrogate
+  - Conservative search
 ---
 
 ## Introduction
 
-[Describe the scope, questions, and methods of the BBO research direction.]
+Offline black-box optimization searches for a high-scoring design when the only evidence is a fixed set of past evaluations. There is no extra query to the true objective, so a surrogate that is optimistic off the data manifold will send the search into regions the dataset never supported.
 
 ## Current direction
 
-[Explain the current research priorities and how future projects will connect to this sub-area.]
-
+Current work treats the forward map from design to score as a calibrated conditional diffusion problem, then regularizes predictions with a support-proximity prior so acquisition stays conservative in low-density regions.
