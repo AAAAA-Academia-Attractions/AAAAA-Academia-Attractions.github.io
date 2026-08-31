@@ -39,32 +39,96 @@ To change ticker copy, edit the published project’s YAML (`title`, `year`, `ve
 
 ### People — `_people/`
 
-Each member is one Markdown file in `_people/`. Front matter is the **name, role, institution, focus, portrait, and links**. The body is a short biography. Home and People both read this collection. The intro page is identity only — portrait, name, facts, links, and bio. It does not list selected work.
+Everyone has a **lab intro** at `/people/<slug>/`, generated from `_people/<slug>.md`. Home and People portraits always open that page. A personal homepage — GitHub Pages or a folder on this site — is only a **Personal site** link on the intro. Do not list papers on the intro; keep it to portrait, facts, links, and a short bio.
 
 | What you see | Where to edit |
 | --- | --- |
-| Page title and lead | `people/index.html` → `.page-hero` |
+| People page title and lead | `people/index.html` |
 | Honeycomb | Every `_people/*.md` with `listed: true` |
-| Homepage constellation | Files with `homepage: true` (keep this to five) |
-| Lab intro page | `_people/<slug>.md` → `/people/<slug>/` |
-| Card destination | Always the Markdown intro |
-| Personal website | `website` on that intro page |
+| Home constellation (five portraits) | Files with `homepage: true` |
+| Lab intro | `_people/<slug>.md` |
+
+**Every member starts the same way.** Create `_people/<slug>.md` (for example `_people/ye-yuan.md`). Put a photo at `assets/images/people/<slug>.jpg` when you have one. Then choose A or B below for the personal site.
+
+| Field | Required | What it does |
+| --- | --- | --- |
+| `title` | yes | Name on cards and the intro |
+| `role` | yes | Role line (Ph.D. Candidate, …) |
+| `institution` | yes | School / lab line |
+| `focus` | yes | Short research focus on the card |
+| `listed` | yes | `true` to show in the People honeycomb |
+| `homepage` | no | `true` to also show on Home (keep five) |
+| `portrait` | no | Path such as `/assets/images/people/ye-yuan.jpg` |
+| `email` | no | Mailto link on the intro |
+| `website` | no | Personal site — see A and B |
+| `scholar` / `github` / `cv` | no | Extra links on the intro |
+| Markdown body | no | Short biography under the facts |
+
+#### A. They already have a GitHub (or other) homepage
+
+Do **not** create a folder under `people/`. Only the Markdown file. Set `website` to the live URL.
 
 ```yaml
 title: Ye Yuan
 role: Ph.D. Candidate
 institution: McGill University · Mila
 focus: Generative AI · BBO · Agents
-website: https://stevenyuan666.github.io/   # linked from the intro page
+email: ye.yuan3@mail.mcgill.ca
+portrait: /assets/images/people/ye-yuan.jpg
+website: https://stevenyuan666.github.io/
+scholar: https://scholar.google.com/citations?user=lemEc74AAAAJ
+github: https://github.com/StevenYuan666
+cv: https://stevenyuan666.github.io/assets/pdf/CV_Ye_YUAN_2026.pdf
 listed: true
 homepage: true
 ```
 
-- Portraits on Home and People always open `/people/<slug>/`.
-- **`website`** is the Personal site link on that page: an external URL, or a path such as `/people/<slug>/site/` for a custom HTML site in `people/<slug>/`. Copy `people/member-template/` and keep that site off `/people/<slug>/`.
-- No `website` — the intro page simply has no Personal site link.
+```text
+Click portrait  →  /people/ye-yuan/                 (this lab’s intro)
+Personal site   →  https://stevenyuan666.github.io/ (their GitHub Pages)
+```
 
-To add a member: create `_people/<slug>.md`. Put a portrait in `assets/images/people/` when you have one.
+Add `scholar`, `github`, or `cv` the same way if they have them. Omit any they do not have.
+
+#### B. They will design a homepage in this repo
+
+Still create `_people/<slug>.md`. Then add a **separate** HTML site under `people/<slug>/site/` so it does not collide with the intro at `/people/<slug>/`.
+
+1. Copy `people/member-template/` to `people/<slug>/site/`.
+2. In that folder’s `index.html`, set:
+
+```yaml
+layout: null
+nav: people
+permalink: /people/<slug>/site/
+```
+
+3. Design the page freely (own CSS, JS, layout). Shared lab chrome is optional.
+4. In `_people/<slug>.md`, set `website` to that **path**, not an `https://` URL:
+
+```yaml
+title: Example Name
+role: Ph.D. Student
+institution: McGill University · Mila
+focus: Agents
+portrait: /assets/images/people/example-name.jpg
+website: /people/example-name/site/
+listed: true
+homepage: false
+```
+
+```text
+Click portrait  →  /people/example-name/      (lab intro)
+Personal site   →  /people/example-name/site/ (their HTML in this repo)
+```
+
+Do not use `permalink: /people/<slug>/` on the custom HTML. That address is reserved for the Markdown intro.
+
+#### C. No personal homepage yet
+
+Omit `website`. Portraits still open the lab intro; that page has no Personal site link. Add `website` later using A or B.
+
+To add a member: `_people/<slug>.md` + optional portrait + A, B, or C.
 
 ### Research — `research/index.html` and `_research/`
 
