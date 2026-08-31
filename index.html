@@ -1,0 +1,115 @@
+---
+layout: null
+nav: home
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AAAAA Lab — advanced, agentic, adaptive, aspiring and autonomous research.">
+  <meta name="theme-color" content="#F2F0E9">
+  <title>AAAAA Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="AAAAA Lab home">AAAAA <small>LAB</small></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button>
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="people/index.html">People</a>
+        <a href="research/index.html">Research</a>
+        <a href="publication/index.html">Publication</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell" id="main-content">
+    <section class="hero" aria-labelledby="home-title">
+      <div class="hero__copy reveal">
+        <p class="eyebrow">Intelligent systems · Human ambition</p>
+        <h1 id="home-title">AAAAA <span>LAB</span></h1>
+        <p class="hero__expansion">Advanced · Agentic · Adaptive · Aspiring · Autonomous</p>
+      </div>
+      <aside class="hero__overview reveal" aria-labelledby="overview-title">
+        <h2 id="overview-title">Overview</h2>
+        <p>We build intelligent systems that can act with purpose, learn from change, and grow toward ambitious goals.</p>
+      </aside>
+    </section>
+
+    <section class="section section--pine" aria-labelledby="latest-publication-title">
+      <div class="section-header reveal">
+        <p class="section-kicker">01 / Latest work</p>
+        <h2 class="section-title" id="latest-publication-title">Latest Publication</h2>
+        <a class="section-link" href="publication/index.html">View all <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="publication-ticker reveal" role="region" aria-label="Scrolling latest publications">
+        <div class="publication-ticker__track">
+          <a class="publication-card" href="publication/project-template/index.html">
+            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
+            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
+          </a>
+          <a class="publication-card" href="publication/project-template/index.html">
+            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
+            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
+          </a>
+          <a class="publication-card" href="publication/project-template/index.html">
+            <span class="publication-card__year">YYYY</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
+            <h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p>
+          </a>
+          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
+          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
+          <article class="publication-card" aria-hidden="true"><span class="publication-card__year">YYYY</span><h3>[Publication or project title]</h3><p>[Authors · Venue · Status]</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="research-area-title">
+      <div class="section-header reveal">
+        <p class="section-kicker">02 / Our directions</p>
+        <h2 class="section-title" id="research-area-title">Research Area</h2>
+        <a class="section-link" href="research/index.html">Explore research <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="research-list reveal">
+        {% assign research_areas = site.research | sort: 'title' %}
+        {% for area in research_areas limit: 3 %}
+        <a class="research-row" href="{{ area.url | relative_url }}">
+          <span class="item-index">A / 0{{ forloop.index }}</span>
+          <div class="research-row__copy"><h3>{{ area.title }}</h3><p>{{ area.summary }}</p></div>
+          <span class="research-row__mark" aria-hidden="true"></span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section section--mist" aria-labelledby="people-title">
+      <div class="section-header reveal">
+        <p class="section-kicker">03 / The lab</p>
+        <h2 class="section-title" id="people-title">People</h2>
+        <a class="section-link" href="people/index.html">Meet the team <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="people-intro reveal">Researchers building advanced, adaptive and autonomous intelligence—together.</p>
+      <div class="member-honeycomb reveal" aria-label="AAAAA Lab members">
+        <a class="member-card" href="people/member-01/index.html"><div class="member-hex">Portrait 01</div><h3>[Member 01]</h3><p>[Role / research focus]</p></a>
+        <a class="member-card" href="people/member-02/index.html"><div class="member-hex">Portrait 02</div><h3>[Member 02]</h3><p>[Role / research focus]</p></a>
+        <a class="member-card" href="people/member-03/index.html"><div class="member-hex">Portrait 03</div><h3>[Member 03]</h3><p>[Role / research focus]</p></a>
+        <a class="member-card" href="people/member-04/index.html"><div class="member-hex">Portrait 04</div><h3>[Member 04]</h3><p>[Role / research focus]</p></a>
+        <a class="member-card" href="people/member-05/index.html"><div class="member-hex">Portrait 05</div><h3>[Member 05]</h3><p>[Role / research focus]</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div><strong>AAAAA LAB</strong><p>Advanced · Agentic · Adaptive · Aspiring · Autonomous</p></div>
+      <nav aria-label="Footer navigation"><a href="people/index.html">People</a><a href="research/index.html">Research</a><a href="publication/index.html">Publication</a></nav>
+    </div>
+  </footer>
+</body>
+</html>

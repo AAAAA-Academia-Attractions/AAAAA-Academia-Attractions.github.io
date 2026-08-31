@@ -1,0 +1,38 @@
+title: AAAAA Lab
+description: Advanced · Agentic · Adaptive · Aspiring · Autonomous
+url: ""
+baseurl: ""
+lang: en
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  research:
+    output: true
+    permalink: /research/:name/
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: research-area
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: ongoing-project
+
+exclude:
+  - brand-spec.md
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - node_modules
+  - vendor
+

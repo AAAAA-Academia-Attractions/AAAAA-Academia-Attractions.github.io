@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AAAAA Lab publication and interactive project page template.">
+  <title>[Project title] — AAAAA Lab</title>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <!-- Add project-specific CSS here, after the shared site stylesheet. -->
+  <script src="../../assets/js/site.js" defer></script>
+  <!-- Add Canvas, WebGL, visualization, model, or project-specific scripts here. -->
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../../people/index.html">People</a><a href="../../research/index.html">Research</a><a href="../index.html" aria-current="page">Publication</a></nav></div></header>
+  <main class="page-shell" id="main-content">
+    <header class="detail-hero"><div><p class="eyebrow">Publication / Interactive project</p><h1>[Publication or project title]</h1></div><aside class="detail-hero__aside"><dl><dt>Authors</dt><dd>[Names]</dd><dt>Venue</dt><dd>[Venue, year]</dd><dt>Links</dt><dd>[Paper · Code · Data]</dd></dl></aside></header>
+    <section class="tabs" data-tabs>
+      <div class="tab-list" role="tablist" aria-label="Project information">
+        <button class="tab-button" id="project-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="project-panel-overview">Overview</button>
+        <button class="tab-button" id="project-tab-demo" type="button" role="tab" aria-selected="false" aria-controls="project-panel-demo" tabindex="-1">Live Demo</button>
+        <button class="tab-button" id="project-tab-resources" type="button" role="tab" aria-selected="false" aria-controls="project-panel-resources" tabindex="-1">Resources</button>
+      </div>
+      <div class="tab-panel" id="project-panel-overview" role="tabpanel" aria-labelledby="project-tab-overview"><div class="prose-grid"><h2>Abstract</h2><div class="prose-grid__body"><p>[Add the project abstract, motivation, method, results and media. This is ordinary HTML, so the project can use any structure required.]</p></div></div></div>
+      <div class="tab-panel" id="project-panel-demo" role="tabpanel" aria-labelledby="project-tab-demo" hidden>
+        <div class="demo-lab">
+          <div class="demo-controls"><h2>Demo slot</h2><p>This small interaction proves that each publication page can run its own JavaScript. Replace it with the project's real demonstration.</p><label for="demo-level">Parameter<input id="demo-level" type="range" min="0" max="100" value="50" data-demo-range></label></div>
+          <div class="demo-stage" data-demo-stage><div class="demo-orbit" aria-hidden="true"></div><output for="demo-level" data-demo-output>50</output></div>
+        </div>
+      </div>
+      <div class="tab-panel" id="project-panel-resources" role="tabpanel" aria-labelledby="project-tab-resources" hidden><div class="prose-grid"><h2>Downloads</h2><div class="prose-grid__body"><p>[Add paper PDF, code repository, dataset, video, citation and supplementary material links.]</p></div></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="site-footer__inner"><div><strong>AAAAA LAB</strong><p>Independent publication/project page</p></div><nav aria-label="Footer navigation"><a href="../index.html">Back to Publication</a><a href="../../index.html">Lab home</a></nav></div></footer>
+</body>
+</html>
+

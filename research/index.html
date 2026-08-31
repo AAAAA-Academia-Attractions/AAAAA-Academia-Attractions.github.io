@@ -1,0 +1,29 @@
+---
+layout: null
+nav: research
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research areas at AAAAA Lab.">
+  <title>Research — AAAAA Lab</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script src="../assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../index.html">Home</a><a href="../people/index.html">People</a><a href="index.html" aria-current="page">Research</a><a href="../publication/index.html">Publication</a></nav></div></header>
+  <main class="page-shell" id="main-content">
+    <header class="page-hero"><div><p class="eyebrow">Our directions</p><h1 class="page-title">Research</h1></div><p class="page-lead">Research areas connect the lab's long-term questions with people, publications and live project work.</p></header>
+    <section class="section" aria-label="Research directory"><div class="directory-list">
+      {% assign research_areas = site.research | sort: 'title' %}
+      {% for area in research_areas %}
+      <a class="directory-row" href="{{ area.url | relative_url }}"><span class="item-index">A / 0{{ forloop.index }}</span><div><h2>{{ area.title }}</h2><p>{{ area.summary }}</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+      {% endfor %}
+    </div></section>
+  </main>
+  <footer class="site-footer"><div class="site-footer__inner"><div><strong>AAAAA LAB</strong><p>Research directory</p></div><nav aria-label="Footer navigation"><a href="../people/index.html">People</a><a href="index.html">Research</a><a href="../publication/index.html">Publication</a></nav></div></footer>
+</body>
+</html>

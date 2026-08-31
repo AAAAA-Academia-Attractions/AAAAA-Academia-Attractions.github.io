@@ -1,0 +1,21 @@
+{% assign project_status = include.project.status | default: 'ongoing' %}
+{% if project_status == 'published' %}
+  {% assign project_href = '/publication/' | append: include.project.slug | append: '/' %}
+  {% assign status_label = 'Published' %}
+{% else %}
+  {% assign project_href = '/projects/' | append: include.project.slug | append: '/' %}
+  {% assign status_label = 'On going' %}
+{% endif %}
+<a class="project-card" href="{{ project_href | relative_url }}" data-status="{{ project_status }}">
+  <div class="project-card__top">
+    <span class="project-status project-status--{{ project_status }}"><i aria-hidden="true"></i>{{ status_label }}</span>
+    <span class="project-card__arrow" aria-hidden="true">↗</span>
+  </div>
+  <div class="keyword-list">
+    {% for keyword in include.project.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}
+  </div>
+  <h3>{{ include.project.title }}</h3>
+  <p class="project-card__summary">{{ include.project.summary }}</p>
+  <div class="project-card__members"><span>Members</span><p>{{ include.project.members | join: ' · ' }}</p></div>
+</a>
+
