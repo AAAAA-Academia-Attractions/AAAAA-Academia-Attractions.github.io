@@ -2,16 +2,18 @@
 title: Information Retrieval
 nav: research
 parent_area: Algorithm
-summary: "[Add a concise introduction to the Information Retrieval research direction.]"
-lead: "[Lead member]"
-keywords: []
+summary: "Retrieving visually rich documents without giving up the storage and serving cost of a single dense vector."
+lead: Weien Li
+keywords:
+  - Visual document retrieval
+  - Dense retrieval
+  - Multimodal embeddings
 ---
 
 ## Introduction
 
-[Describe the scope, questions, and methods of the Information Retrieval research direction.]
+Visual document retrieval asks a model to find the right page from a slide, scan, or poster, using the rendered image rather than a brittle OCR pipeline. Late-interaction retrievers keep token-level matching and high quality; dense single-vector retrievers keep a compact index. The open question is how much of that quality can be recovered without multiplying the stored vectors.
 
 ## Current direction
 
-[Explain the current research priorities and how future projects will connect to this sub-area.]
-
+Current work probes internal transformer layers for retrieval-relevant signal and fuses it into one embedding, so a dense retriever can close the gap to late interaction without changing the backbone or the serving footprint.

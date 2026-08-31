@@ -11,10 +11,12 @@ Nav: Home · People · Research · Publication · Projects
 
 Research hierarchy:  main area  →  sub-area Markdown  →  projects
 Projects:            on-going `_projects/*.md`  +  published `projects/<slug>/index.html`
+People:              `_people/*.md`  →  Home / People cards  →  `/people/<slug>/`  →  optional `website`
 ```
 
 - **On-going projects** use the shared Markdown layout and URLs `/projects/<slug>/`.
 - **Published projects** are free HTML. YAML is only for directories (Projects, Research, Publication, homepage ticker).
+- **People intros** are Markdown in `_people/`. Portraits always open that page. A `website` field is linked from the intro, not from the card.
 - Research area pages pull related work by `research_area_slug`.
 - Publication and the homepage ticker list pages with `status: published` and `listed: true`, newest `date` first.
 
@@ -31,24 +33,38 @@ Most page *introductions* are a short lead on that HTML page. Lists under them a
 | Latest Publication ticker | Automatic: newest 5 published pages. Cards show **year, title, venue** (no authors). |
 | Research Area accordion | Automatic from `_data/research_hierarchy.yml` |
 | People sentence | `.people-intro` |
-| Five rotating portraits | The five `.member-card` links inside `.member-constellation`. Keep name, role, institution, and focus in `.member-card__meta` so the hover panel can copy them. |
+| Five rotating portraits | Automatic: members with `homepage: true` in `_people/`. |
 
 To change ticker copy, edit the published project’s YAML (`title`, `year`, `venue`, `date`). To hide a paper from Home and Publication, set `listed: false`.
 
-### People — `people/index.html`
+### People — `_people/`
+
+Each member is one Markdown file in `_people/`. Front matter is the **name, role, institution, focus, portrait, and links**. The body is a short biography. Home and People both read this collection. The intro page is identity only — portrait, name, facts, links, and bio. It does not list selected work.
 
 | What you see | Where to edit |
 | --- | --- |
-| Page title and lead | `.page-hero` (`h1`, `.page-lead`) |
-| Honeycomb of ten members | The `member-card` loop. Slot `1` is Ye Yuan (external site). Slots `2`–`10` are `people/member-XX/`. |
+| Page title and lead | `people/index.html` → `.page-hero` |
+| Honeycomb | Every `_people/*.md` with `listed: true` |
+| Homepage constellation | Files with `homepage: true` (keep this to five) |
+| Lab intro page | `_people/<slug>.md` → `/people/<slug>/` |
+| Card destination | Always the Markdown intro |
+| Personal website | `website` on that intro page |
 
-Update a member in **three** places when they appear on Home as well:
+```yaml
+title: Ye Yuan
+role: Ph.D. Candidate
+institution: McGill University · Mila
+focus: Generative AI · BBO · Agents
+website: https://stevenyuan666.github.io/   # linked from the intro page
+listed: true
+homepage: true
+```
 
-1. `people/index.html` — directory hex, name, and meta
-2. `index.html` — homepage constellation card (core five only)
-3. `people/member-XX/index.html` — personal homepage
+- Portraits on Home and People always open `/people/<slug>/`.
+- **`website`** is the Personal site link on that page: an external URL, or a path such as `/people/<slug>/site/` for a custom HTML site in `people/<slug>/`. Copy `people/member-template/` and keep that site off `/people/<slug>/`.
+- No `website` — the intro page simply has no Personal site link.
 
-Copy `people/member-template/index.html` into an empty `member-XX` folder. Put portraits in `assets/images/people/`. Member pages may add their own CSS, JS, and tabs after the shared assets.
+To add a member: create `_people/<slug>.md`. Put a portrait in `assets/images/people/` when you have one.
 
 ### Research — `research/index.html` and `_research/`
 
@@ -187,6 +203,8 @@ bundle exec jekyll build
 ```
 
 Then refresh the browser (hard-refresh if the tab icon looks stale).
+
+Restart `jekyll serve` after editing `_config.yml`. The watcher does not reload collections, so People can render empty until the server is restarted.
 
 ## Deployment
 

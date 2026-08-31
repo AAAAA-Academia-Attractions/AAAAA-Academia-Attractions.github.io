@@ -462,8 +462,8 @@ p {
 }
 
 .publication-ticker .publication-card {
-  width: min(27rem, 80vw);
-  min-height: 12.5rem;
+  width: min(28rem, 80vw);
+  min-height: 14.25rem;
   flex: 0 0 auto;
   border-top: 1px solid var(--line-light);
   border-right: 1px solid var(--line-light);
@@ -515,8 +515,36 @@ p {
   font-size: 0.72rem;
 }
 
+.publication-card__foot {
+  margin-top: 0.7rem;
+}
+
+.publication-card__foot p {
+  margin-top: 0;
+}
+
+.publication-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.publication-ticker .keyword {
+  min-height: 1.45rem;
+  padding: 0.18rem 0.5rem;
+  border-color: rgb(200 208 203 / 42%);
+  color: var(--sage);
+  font-size: 0.62rem;
+}
+
 .publication-card:hover p {
   color: rgb(23 28 26 / 68%);
+}
+
+.publication-ticker .publication-card:hover .keyword {
+  border-color: rgb(24 63 58 / 28%);
+  color: var(--pine);
 }
 
 .publication-card__arrow {
@@ -1365,6 +1393,47 @@ p {
   margin: 0;
 }
 
+.member-hero {
+  align-items: start;
+  grid-template-columns: minmax(0, 0.85fr) minmax(20rem, 0.85fr);
+}
+
+.member-hero .member-hex {
+  width: clamp(11.5rem, 26vw, 16.5rem);
+  margin-bottom: 1.35rem;
+}
+
+.member-hero h1 {
+  max-width: 18ch;
+  margin-top: 0.35rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.member-hero .detail-hero__aside dl {
+  font-size: clamp(1.02rem, 1.45vw, 1.2rem);
+  gap: 0.9rem 1.4rem;
+}
+
+.member-hero .detail-hero__aside dt {
+  padding-top: 0.12rem;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+}
+
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.15rem;
+}
+
+.member-links a:not(:last-child)::after {
+  content: "·";
+  margin: 0 0.5rem;
+  color: rgb(23 28 26 / 38%);
+}
+
 .research-area-summary {
   max-width: 48rem;
   margin-top: 1.15rem;
@@ -1794,6 +1863,12 @@ p {
   font-family: var(--serif);
   font-size: clamp(1.25rem, 2vw, 1.65rem);
   line-height: 1.5;
+}
+
+.prose-grid__body a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2rem;
 }
 
 .photo-placeholder-grid {

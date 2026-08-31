@@ -61,7 +61,15 @@ nav: home
             {% for project in ticker_items %}
             <a class="publication-card" href="{{ project.url | relative_url }}"{% if copy == 2 or pad > 1 %} aria-hidden="true" tabindex="-1"{% endif %}>
               <span class="publication-card__year">{{ project.year | default: 'YYYY' }}</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
-              <h3>{{ project.title }}</h3>{% if project.venue %}<p>{{ project.venue }}</p>{% endif %}
+              <h3>{{ project.title }}</h3>
+              <div class="publication-card__foot">
+                {% if project.venue %}<p>{{ project.venue }}</p>{% endif %}
+                {% if project.keywords.size > 0 %}
+                <div class="publication-card__tags">
+                  {% for keyword in project.keywords limit: 3 %}<span class="keyword">{{ keyword }}</span>{% endfor %}
+                </div>
+                {% endif %}
+              </div>
             </a>
             {% endfor %}
             {% endfor %}
@@ -98,16 +106,13 @@ nav: home
       <div class="section-header reveal">
         <p class="section-kicker">03 / The lab</p>
         <h2 class="section-title" id="people-title">People</h2>
-        <a class="section-link" href="people/index.html">Meet the team <span aria-hidden="true">↗</span></a>
+        <a class="section-link" href="{{ '/people/' | relative_url }}">Meet the team <span aria-hidden="true">↗</span></a>
       </div>
       <p class="people-intro reveal">Researchers building advanced, analytical and adaptive intelligence—together.</p>
+      {% include people-sources.html %}
       <div class="member-constellation reveal" data-member-constellation aria-label="AAAAA Lab core members">
         <div class="member-constellation__orbit">
-          <a class="member-card member-constellation__member member-constellation__member--north" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><div class="member-constellation__identity"><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></div></a>
-          <a class="member-card member-constellation__member member-constellation__member--upper-right" href="people/member-02/index.html" aria-label="Member 02"><div class="member-hex">Portrait 02</div><div class="member-constellation__identity"><h3>[Member 02]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
-          <a class="member-card member-constellation__member member-constellation__member--lower-right" href="people/member-03/index.html" aria-label="Member 03"><div class="member-hex">Portrait 03</div><div class="member-constellation__identity"><h3>[Member 03]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
-          <a class="member-card member-constellation__member member-constellation__member--lower-left" href="people/member-04/index.html" aria-label="Member 04"><div class="member-hex">Portrait 04</div><div class="member-constellation__identity"><h3>[Member 04]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
-          <a class="member-card member-constellation__member member-constellation__member--upper-left" href="people/member-05/index.html" aria-label="Member 05"><div class="member-hex">Portrait 05</div><div class="member-constellation__identity"><h3>[Member 05]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+          {% for person in homepage_people %}{% include member-card.html person=person extra_class="member-constellation__member" identity_class="member-constellation__identity" %}{% endfor %}
         </div>
         <aside class="member-constellation__detail" data-member-detail aria-hidden="true">
           <div class="member-constellation__detail-body">

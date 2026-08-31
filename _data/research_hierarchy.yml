@@ -5,6 +5,8 @@
       slug: bbo
     - title: Information Retrieval
       slug: information-retrieval
+    - title: Discrete Diffusion
+      slug: discrete-diffusion
 
 - title: Agent
   id: agent

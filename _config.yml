@@ -14,6 +14,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+  people:
+    output: true
+    permalink: /people/:name/
 
 defaults:
   - scope:
@@ -27,6 +30,12 @@ defaults:
     values:
       layout: ongoing-project
       nav: projects
+  - scope:
+      path: ""
+      type: people
+    values:
+      layout: member
+      nav: people
 
 exclude:
   - brand-spec.md
@@ -36,4 +45,5 @@ exclude:
   - README.md
   - node_modules
   - vendor
+  - people/member-template
 

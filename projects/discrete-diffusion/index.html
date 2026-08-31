@@ -1,0 +1,141 @@
+---
+layout: null
+nav: projects
+status: published
+listed: true
+date: 2026-07-15
+permalink: /projects/discrete-diffusion/
+title: "Discrete Diffusion Models: A Unified Framework from Tokenization to Generation"
+year: 2026
+summary: "A tokenization-centric survey that treats discrete diffusion as one design space, from how the state space is built through training, sampling, systems, and evaluation."
+research_area: Discrete Diffusion
+research_area_slug: discrete-diffusion
+authors:
+  - Ye Yuan
+  - Weien Li
+  - Rui Song
+  - Zeyu Li
+  - Haochen Liu
+  - Xiangyu Kong
+  - Zixuan Dong
+  - Linfeng Du
+  - Zipeng Sun
+  - Weixu Zhang
+  - Jiaxin Huang
+  - Changjiang Han
+  - Yonghan Yang
+  - Zichen Zhao
+  - Xiuyuan Hu
+  - Haolun Wu
+  - Yankai Chen
+  - Fengran Mo
+  - Jikun Kang
+  - Bowei He
+  - Philip S. Yu
+  - Xue Liu
+members:
+  - Ye Yuan
+  - Weien Li
+  - Rui Song
+venue: arXiv preprint
+keywords:
+  - Discrete diffusion
+  - Tokenization
+  - Generative models
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.summary | escape }}">
+  <title>Discrete Diffusion — {{ site.title }}</title>
+  {% include head-icons.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  <style>
+    .dd-band { padding: clamp(2.2rem, 4.6vw, 3.9rem) var(--page-x); color: var(--paper); background: var(--ink); }
+    .dd-band .eyebrow { color: var(--brass); }
+    .dd-band h1 { max-width: 22ch; margin-top: 0.75rem; font-family: var(--serif); font-size: clamp(2.6rem, 6.4vw, 5.4rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.94; }
+    .dd-band p { max-width: 40rem; margin-top: 1.2rem; color: rgb(242 240 233 / 80%); font-family: var(--serif); font-size: clamp(1.12rem, 2vw, 1.38rem); line-height: 1.42; }
+    .dd-meta { display: flex; flex-wrap: wrap; gap: 0.55rem 1.35rem; margin-top: 1.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .dd-meta a { text-decoration: underline; text-underline-offset: 0.22rem; }
+    .dd-parts { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); }
+    .dd-part { padding: clamp(1.4rem, 2.8vw, 2.1rem) clamp(1rem, 2vw, 1.6rem); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .dd-part:nth-child(2n) { border-right: 0; }
+    .dd-part:nth-last-child(-n+2) { border-bottom: 0; }
+    .dd-part b { display: block; color: var(--brass); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .dd-part h2 { margin-top: 0.7rem; font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.85rem); font-weight: 400; letter-spacing: -0.04em; }
+    .dd-part p { margin-top: 0.7rem; color: rgb(23 28 26 / 72%); }
+    .dd-domains { display: grid; margin: 0 var(--page-x) var(--section-y); padding-top: var(--section-y); grid-template-columns: minmax(12rem, 0.38fr) minmax(0, 1fr); gap: clamp(1.25rem, 4vw, 3rem); }
+    .dd-domains h2 { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 400; letter-spacing: -0.045em; line-height: 1; }
+    .dd-domains ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .dd-domains li { padding: 1.05rem 0; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: clamp(1.15rem, 2vw, 1.4rem); }
+    .dd-domains small { display: block; margin-top: 0.3rem; color: rgb(23 28 26 / 55%); font-family: var(--sans); font-size: 0.78rem; }
+    @media (max-width: 56rem) {
+      .dd-parts,
+      .dd-domains { grid-template-columns: 1fr; }
+      .dd-part { border-right: 0; }
+      .dd-part:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .dd-part:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  {% include site-header.html %}
+  <main id="main-content">
+    <header class="dd-band">
+      <p class="eyebrow">Algorithm · From tokenization to generation</p>
+      <h1>Discrete Diffusion</h1>
+      <p>{{ page.summary }}</p>
+      <p class="dd-meta">
+        <span>{{ page.venue }}</span>
+        <a href="https://arxiv.org/abs/2607.13431" target="_blank" rel="noopener noreferrer">arXiv ↗</a>
+        <a href="https://huggingface.co/papers/2607.13431" target="_blank" rel="noopener noreferrer">Hugging Face ↗</a>
+        <a href="https://github.com/AAAAA-Academia-Attractions/Discrete-Diffusion" target="_blank" rel="noopener noreferrer">Code ↗</a>
+        <a href="{{ '/research/discrete-diffusion/' | relative_url }}">Research area ↗</a>
+      </p>
+    </header>
+    <section class="dd-parts" aria-label="Four shared components">
+      <article class="dd-part">
+        <b>01</b>
+        <h2>Corruption</h2>
+        <p>How the discrete state is noised: masking, substitution, transition matrices, or continuous-time processes.</p>
+      </article>
+      <article class="dd-part">
+        <b>02</b>
+        <h2>Denoiser</h2>
+        <p>How the reverse model is parameterized to recover clean tokens from a corrupted categorical input.</p>
+      </article>
+      <article class="dd-part">
+        <b>03</b>
+        <h2>Objective</h2>
+        <p>Which training loss matches the intended reverse process, from likelihood to score and ratio matching.</p>
+      </article>
+      <article class="dd-part">
+        <b>04</b>
+        <h2>Sampler</h2>
+        <p>Ancestral steps, remasking, block updates, guidance, and the systems tricks that make parallel decoding usable.</p>
+      </article>
+    </section>
+    <section class="dd-domains">
+      <h2>Where the framework lands</h2>
+      <ol>
+        <li>Text and code<small>Diffusion language models for open-ended generation, infilling, and reasoning.</small></li>
+        <li>Tokenized multimodal media<small>Images, audio, and video after vector quantization, often jointly with text.</small></li>
+        <li>Scientific alphabets<small>Proteins, genomics, molecules, graphs, and structured planning.</small></li>
+      </ol>
+    </section>
+    <section class="section">
+      <div class="prose-grid">
+        <h2>Abstract</h2>
+        <div class="prose-grid__body">
+          <p>Discrete denoising diffusion models have become a compelling alternative to autoregressive modeling for discrete data, offering parallel generation and iterative global refinement. Unlike continuous diffusion, they are shaped by how the discrete state space is constructed: the tokenization scheme, the vocabulary topology, and domain-specific structural alphabets.</p>
+          <p>This survey treats that construction as the primary design axis. Existing formulations — transition-matrix, masking, and score- or ratio-based approaches — become different instantiations of one space, with shared trade-offs in training, inference, scaling, and evaluation.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% include site-footer.html %}
+</body>
+</html>
