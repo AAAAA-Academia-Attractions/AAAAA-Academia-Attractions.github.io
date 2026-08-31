@@ -5,15 +5,25 @@ GitHub Pages website for AAAAA Lab.
 ## Content model
 
 - Main site, member pages, and Publication project pages are independent HTML files.
-- Research Areas are Markdown files in `_research/` and share `_layouts/research-area.html`.
+- Main Research Areas and their sub-area links are defined in `_data/research_hierarchy.yml`.
+- Research sub-areas are Markdown files in `_research/` and share `_layouts/research-area.html`.
 - On-going research projects are Markdown files in `_projects/` and share `_layouts/ongoing-project.html`.
 - Published project cards link directly to the matching independent HTML page under `publication/`.
 
+The hierarchy is:
+
+```text
+Main area → Sub-area Markdown page → Related projects
+```
+
+Home shows five core members. `people/index.html` is the larger directory and currently reserves ten independent member folders.
+
 ## Add a Research Area
 
-1. Copy `_research/area-template.md` to `_research/your-area-slug.md`.
-2. Replace the title, summary, lead, keywords, introduction, and current direction.
-3. Add project entries under `projects`.
+1. Add the main area and sub-area slug to `_data/research_hierarchy.yml`.
+2. Copy `_research/area-template.md` to `_research/your-sub-area-slug.md`.
+3. Replace the title, parent area, summary, lead, keywords, introduction, and current direction.
+4. Add project entries under `projects`.
 
 Each project card accepts:
 

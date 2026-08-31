@@ -32,15 +32,17 @@ nav: home
 
   <main class="page-shell" id="main-content">
     <section class="hero" aria-labelledby="home-title">
-      <div class="hero__copy reveal">
-        <p class="eyebrow">Intelligent systems · Human ambition</p>
-        <h1 id="home-title">AAAAA <span>LAB</span></h1>
-        <p class="hero__expansion">Advanced · Agentic · Adaptive · Aspiring · Autonomous</p>
+      <div class="hero__sensor">
+        <div class="hero__copy reveal" aria-label="AAAAA Lab. Hover, focus, or tap to reveal the lab overview." data-hero-reveal tabindex="0">
+          <p class="eyebrow">Intelligent systems · Human ambition</p>
+          <h1 id="home-title">AAAAA <span>LAB</span></h1>
+          <p class="hero__expansion" id="aaaa-expansion">Advanced · Agentic · Adaptive · Aspiring · Autonomous</p>
+        </div>
+        <aside class="hero__overview" aria-labelledby="overview-title">
+          <h2 id="overview-title">Overview</h2>
+          <p>We build intelligent systems that can act with purpose, learn from change, and grow toward ambitious goals.</p>
+        </aside>
       </div>
-      <aside class="hero__overview reveal" aria-labelledby="overview-title">
-        <h2 id="overview-title">Overview</h2>
-        <p>We build intelligent systems that can act with purpose, learn from change, and grow toward ambitious goals.</p>
-      </aside>
     </section>
 
     <section class="section section--pine" aria-labelledby="latest-publication-title">
@@ -76,14 +78,18 @@ nav: home
         <h2 class="section-title" id="research-area-title">Research Area</h2>
         <a class="section-link" href="research/index.html">Explore research <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="research-list reveal">
-        {% assign research_areas = site.research | sort: 'title' %}
-        {% for area in research_areas limit: 3 %}
-        <a class="research-row" href="{{ area.url | relative_url }}">
-          <span class="item-index">A / 0{{ forloop.index }}</span>
-          <div class="research-row__copy"><h3>{{ area.title }}</h3><p>{{ area.summary }}</p></div>
-          <span class="research-row__mark" aria-hidden="true"></span>
-        </a>
+      <div class="research-clusters reveal">
+        {% for cluster in site.data.research_hierarchy %}
+        <details class="research-cluster">
+          <summary><span class="item-index">A / 0{{ forloop.index }}</span><h3>{{ cluster.title }}</h3><span class="research-cluster__toggle" aria-hidden="true"></span></summary>
+          <div class="research-cluster__panel">
+            {% if cluster.areas.size > 0 %}
+            <nav class="subarea-list" aria-label="{{ cluster.title }} sub-areas">
+              {% for area in cluster.areas %}<a href="{{ '/research/' | append: area.slug | append: '/' | relative_url }}"><span>{{ area.title }}</span><small>Introduction &amp; projects ↗</small></a>{% endfor %}
+            </nav>
+            {% else %}<p class="research-empty">Sub-areas will be added here.</p>{% endif %}
+          </div>
+        </details>
         {% endfor %}
       </div>
     </section>
@@ -96,11 +102,11 @@ nav: home
       </div>
       <p class="people-intro reveal">Researchers building advanced, adaptive and autonomous intelligence—together.</p>
       <div class="member-honeycomb reveal" aria-label="AAAAA Lab members">
-        <a class="member-card" href="people/member-01/index.html"><div class="member-hex">Portrait 01</div><h3>[Member 01]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="people/member-02/index.html"><div class="member-hex">Portrait 02</div><h3>[Member 02]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="people/member-03/index.html"><div class="member-hex">Portrait 03</div><h3>[Member 03]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="people/member-04/index.html"><div class="member-hex">Portrait 04</div><h3>[Member 04]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="people/member-05/index.html"><div class="member-hex">Portrait 05</div><h3>[Member 05]</h3><p>[Role / research focus]</p></a>
+        <a class="member-card" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></a>
+        <a class="member-card" href="people/member-02/index.html"><div class="member-hex">Portrait 02</div><h3>[Member 02]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
+        <a class="member-card" href="people/member-03/index.html"><div class="member-hex">Portrait 03</div><h3>[Member 03]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
+        <a class="member-card" href="people/member-04/index.html"><div class="member-hex">Portrait 04</div><h3>[Member 04]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
+        <a class="member-card" href="people/member-05/index.html"><div class="member-hex">Portrait 05</div><h3>[Member 05]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
       </div>
     </section>
   </main>

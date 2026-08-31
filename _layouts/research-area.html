@@ -14,28 +14,27 @@
   <main class="page-shell" id="main-content">
     <header class="detail-hero research-area-hero">
       <div>
-        <p class="eyebrow">Research area</p>
+        <p class="eyebrow">Research{% if page.parent_area %} / {{ page.parent_area }}{% endif %}</p>
         <h1>{{ page.title }}</h1>
         <p class="research-area-summary">{{ page.summary }}</p>
       </div>
       <aside class="detail-hero__aside">
         <dl>
           <dt>Lead</dt><dd>{{ page.lead }}</dd>
-          <dt>Keywords</dt><dd><div class="keyword-list">{% for keyword in page.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}</div></dd>
+          <dt>Keywords</dt><dd><div class="keyword-list">{% if page.keywords.size > 0 %}{% for keyword in page.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}{% else %}<span>[Add keywords]</span>{% endif %}</div></dd>
         </dl>
       </aside>
     </header>
     <section class="section research-area-copy">
-      <div class="prose-grid"><h2>Introduction</h2><article class="markdown-body">{{ content }}</article></div>
+      <div class="prose-grid"><h2>About this area</h2><article class="markdown-body">{{ content }}</article></div>
     </section>
     <section class="section section--mist" aria-labelledby="related-projects-title">
       <div class="section-header"><p class="section-kicker">Related work</p><h2 class="section-title" id="related-projects-title">Projects</h2><span class="section-link">Status-driven links</span></div>
       <div class="project-card-grid">
-        {% for project in page.projects %}{% include project-card.html project=project %}{% endfor %}
+        {% if page.projects.size > 0 %}{% for project in page.projects %}{% include project-card.html project=project %}{% endfor %}{% else %}<div class="project-empty-state"><p>No projects have been added to this sub-area yet.</p><span>Add entries under <code>projects</code> in this Markdown file.</span></div>{% endif %}
       </div>
     </section>
   </main>
   {% include site-footer.html %}
 </body>
 </html>
-

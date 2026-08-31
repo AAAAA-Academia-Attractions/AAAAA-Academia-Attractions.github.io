@@ -25,7 +25,8 @@ This file documents the shared visual system used by the public HTML pages. It i
 ## Asset status
 
 - Official standalone logo asset: not supplied; the provided typographic wordmark is preserved.
-- Member portraits: pending. Pages use explicit portrait placeholders until real images are added.
+- Ye Yuan portrait: `assets/images/people/ye-yuan.jpg`, sourced from his official personal website (`https://stevenyuan666.github.io/assets/img/profile_photo.jpg`).
+- Remaining member portraits: pending. Their cards use explicit portrait placeholders until real images are added.
 - Publication/project media: pending. Project pages include honest demo and media slots.
 
 ## Page rules

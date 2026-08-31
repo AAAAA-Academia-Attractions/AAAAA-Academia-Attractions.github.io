@@ -26,6 +26,22 @@
     });
   }
 
+  const heroReveal = document.querySelector("[data-hero-reveal]");
+  if (heroReveal && window.matchMedia("(hover: none)").matches) {
+    const toggleHero = () => {
+      const revealed = heroReveal.classList.toggle("is-revealed");
+      if (!revealed) heroReveal.blur();
+    };
+    heroReveal.addEventListener("click", (event) => {
+      if (!event.target.closest("a, button, input")) toggleHero();
+    });
+    heroReveal.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      toggleHero();
+    });
+  }
+
   document.querySelectorAll("[data-tabs]").forEach((tabGroup) => {
     const tabs = [...tabGroup.querySelectorAll('[role="tab"]')];
     const panels = [...tabGroup.querySelectorAll('[role="tabpanel"]')];
@@ -88,4 +104,3 @@
     revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 })();
-

@@ -1,3 +1,7 @@
+---
+layout: null
+nav: people
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,12 +18,15 @@
   <main class="page-shell" id="main-content">
     <header class="page-hero"><div><p class="eyebrow">The lab</p><h1 class="page-title">People</h1></div><p class="page-lead">Each member has an independent HTML homepage and may add custom tabs, layouts, styles and interactions.</p></header>
     <section class="section" aria-label="Member directory">
-      <div class="member-honeycomb" aria-label="AAAAA Lab members">
-        <a class="member-card" href="member-01/index.html"><div class="member-hex">Portrait 01</div><h3>[Member 01]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="member-02/index.html"><div class="member-hex">Portrait 02</div><h3>[Member 02]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="member-03/index.html"><div class="member-hex">Portrait 03</div><h3>[Member 03]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="member-04/index.html"><div class="member-hex">Portrait 04</div><h3>[Member 04]</h3><p>[Role / research focus]</p></a>
-        <a class="member-card" href="member-05/index.html"><div class="member-hex">Portrait 05</div><h3>[Member 05]</h3><p>[Role / research focus]</p></a>
+      <div class="member-honeycomb member-honeycomb--directory" aria-label="AAAAA Lab members">
+        {% for member_number in (1..10) %}
+        {% assign member_slug = member_number | prepend: '0' | slice: -2, 2 %}
+        {% if member_number == 1 %}
+        <a class="member-card" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="../assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></a>
+        {% else %}
+        <a class="member-card" href="member-{{ member_slug }}/index.html"><div class="member-hex">Portrait {{ member_slug }}</div><h3>[Member {{ member_slug }}]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
+        {% endif %}
+        {% endfor %}
       </div>
     </section>
   </main>

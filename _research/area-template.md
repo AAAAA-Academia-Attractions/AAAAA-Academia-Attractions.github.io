@@ -1,6 +1,7 @@
 ---
 title: "[Research Area Name]"
 nav: research
+parent_area: "[Main Area Name]"
 summary: "[A concise explanation of the shared question, methods, and scope of this research area.]"
 lead: "[Lead member]"
 keywords:
@@ -38,4 +39,3 @@ projects:
 ## Current direction
 
 [Explain what the group is exploring now and how the related projects connect to the larger research direction.]
-

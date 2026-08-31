@@ -1,0 +1,20 @@
+- title: Algorithm
+  id: algorithm
+  areas:
+    - title: BBO
+      slug: bbo
+    - title: Information Retrieval
+      slug: information-retrieval
+
+- title: Agent
+  id: agent
+  areas:
+    - title: Healthcare
+      slug: healthcare
+    - title: Finance
+      slug: finance
+
+- title: Evaluation
+  id: evaluation
+  areas: []
+
