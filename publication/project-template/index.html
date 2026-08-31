@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AAAAA Lab publication and interactive project page template.">
   <title>[Project title] — AAAAA Lab</title>
+  {% include head-icons.html %}
   <link rel="stylesheet" href="../../assets/css/site.css">
   <!-- Add project-specific CSS here, after the shared site stylesheet. -->
   <script src="../../assets/js/site.js" defer></script>
@@ -12,7 +16,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../../people/index.html">People</a><a href="../../research/index.html">Research</a><a href="../index.html" aria-current="page">Publication</a></nav></div></header>
+  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../../people/index.html">People</a><a href="../../research/index.html">Research</a><a href="../index.html" aria-current="page">Publication</a></nav></div></header>
   <main class="page-shell" id="main-content">
     <header class="detail-hero"><div><p class="eyebrow">Publication / Interactive project</p><h1>[Publication or project title]</h1></div><aside class="detail-hero__aside"><dl><dt>Authors</dt><dd>[Names]</dd><dt>Venue</dt><dd>[Venue, year]</dd><dt>Links</dt><dd>[Paper · Code · Data]</dd></dl></aside></header>
     <section class="tabs" data-tabs>

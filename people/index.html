@@ -9,24 +9,35 @@ nav: people
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="People at AAAAA Lab.">
   <title>People — AAAAA Lab</title>
+  {% include head-icons.html %}
   <link rel="stylesheet" href="../assets/css/site.css">
   <script src="../assets/js/site.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../index.html">Home</a><a href="index.html" aria-current="page">People</a><a href="../research/index.html">Research</a><a href="../publication/index.html">Publication</a></nav></div></header>
+  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../index.html">Home</a><a href="index.html" aria-current="page">People</a><a href="../research/index.html">Research</a><a href="../publication/index.html">Publication</a></nav></div></header>
   <main class="page-shell" id="main-content">
     <header class="page-hero"><div><p class="eyebrow">The lab</p><h1 class="page-title">People</h1></div><p class="page-lead">Each member has an independent HTML homepage and may add custom tabs, layouts, styles and interactions.</p></header>
     <section class="section" aria-label="Member directory">
-      <div class="member-honeycomb member-honeycomb--directory" aria-label="AAAAA Lab members">
-        {% for member_number in (1..10) %}
-        {% assign member_slug = member_number | prepend: '0' | slice: -2, 2 %}
-        {% if member_number == 1 %}
-        <a class="member-card" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="../assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></a>
-        {% else %}
-        <a class="member-card" href="member-{{ member_slug }}/index.html"><div class="member-hex">Portrait {{ member_slug }}</div><h3>[Member {{ member_slug }}]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
-        {% endif %}
-        {% endfor %}
+      <div class="member-stack" data-member-stack aria-label="AAAAA Lab members">
+        <div class="member-stack__pile">
+          {% for member_number in (1..10) %}
+          {% assign member_slug = member_number | prepend: '0' | slice: -2, 2 %}
+          {% if member_number == 1 %}
+          <a class="member-card member-stack__member member-stack__member--s1" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="../assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><div class="member-stack__identity"><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></div></a>
+          {% else %}
+          <a class="member-card member-stack__member member-stack__member--s{{ member_number }}" href="member-{{ member_slug }}/index.html" aria-label="Member {{ member_slug }}"><div class="member-hex">Portrait {{ member_slug }}</div><div class="member-stack__identity"><h3>[Member {{ member_slug }}]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+          {% endif %}
+          {% endfor %}
+        </div>
+        <aside class="member-stack__detail" data-member-detail aria-hidden="true">
+          <p class="member-stack__hint">Hover a portrait</p>
+          <div class="member-stack__detail-body">
+            <div class="member-hex" data-member-detail-hex></div>
+            <h3 data-member-detail-name></h3>
+            <ul class="member-card__meta" data-member-detail-meta></ul>
+          </div>
+        </aside>
       </div>
     </section>
   </main>

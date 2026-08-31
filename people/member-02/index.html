@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,13 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AAAAA Lab member 02 homepage.">
   <title>[Member 02] — AAAAA Lab</title>
+  {% include head-icons.html %}
   <link rel="stylesheet" href="../../assets/css/site.css">
   <!-- Member 02 may add independent CSS and JavaScript here. -->
   <script src="../../assets/js/site.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
+  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
   <main class="page-shell" id="main-content"><header class="detail-hero"><div><p class="eyebrow">Member 02</p><h1>[Member name]</h1></div><aside class="detail-hero__aside"><dl><dt>Role</dt><dd>[Role]</dd><dt>Focus</dt><dd>[Research focus]</dd><dt>Links</dt><dd>[Scholar · GitHub · CV]</dd></dl></aside></header><section class="tabs" data-tabs><div class="tab-list" role="tablist" aria-label="Member 02 information"><button class="tab-button" id="m02-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="m02-overview">Overview</button><button class="tab-button" id="m02-teaching-tab" type="button" role="tab" aria-selected="false" aria-controls="m02-teaching" tabindex="-1">Teaching</button><button class="tab-button" id="m02-publications-tab" type="button" role="tab" aria-selected="false" aria-controls="m02-publications" tabindex="-1">Publications</button></div><div class="tab-panel" id="m02-overview" role="tabpanel" aria-labelledby="m02-overview-tab"><div class="prose-grid"><h2>Biography</h2><div class="prose-grid__body"><p>[Member 02 biography and research interests.]</p></div></div></div><div class="tab-panel" id="m02-teaching" role="tabpanel" aria-labelledby="m02-teaching-tab" hidden><div class="prose-grid"><h2>Teaching</h2><div class="prose-grid__body"><p>[Courses, talks or mentoring information.]</p></div></div></div><div class="tab-panel" id="m02-publications" role="tabpanel" aria-labelledby="m02-publications-tab" hidden><div class="prose-grid"><h2>Selected work</h2><div class="prose-grid__body"><p>[Member 02 publication links.]</p></div></div></div></section></main>
   <footer class="site-footer"><div class="site-footer__inner"><div><strong>AAAAA LAB</strong><p>Member 02 homepage</p></div><nav aria-label="Footer navigation"><a href="../index.html">Back to People</a><a href="../../index.html">Lab home</a></nav></div></footer>
 </body>

@@ -89,6 +89,128 @@
     updateDemo();
   }
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const initResearchCluster = (cluster) => {
+    const summary = cluster.querySelector("summary");
+    const panel = cluster.querySelector(".research-cluster__panel");
+    if (!summary || !panel || reduceMotion) return;
+
+    if (!panel.querySelector(":scope > .research-cluster__panel-inner")) {
+      const inner = document.createElement("div");
+      inner.className = "research-cluster__panel-inner";
+      while (panel.firstChild) inner.appendChild(panel.firstChild);
+      panel.appendChild(inner);
+    }
+
+    cluster.classList.add("is-animated");
+    cluster.open = true;
+    summary.setAttribute("aria-expanded", "false");
+
+    summary.addEventListener("click", (event) => {
+      event.preventDefault();
+      const next = !cluster.classList.contains("is-expanded");
+      cluster.classList.toggle("is-expanded", next);
+      summary.setAttribute("aria-expanded", String(next));
+    });
+  };
+
+  document.querySelectorAll(".research-cluster").forEach(initResearchCluster);
+
+  const shuffle = (items) => {
+    const copy = [...items];
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+    }
+    return copy;
+  };
+
+  const bindMemberInspect = (root, members) => {
+    const detail = root.querySelector("[data-member-detail]");
+    const detailHex = root.querySelector("[data-member-detail-hex]");
+    const detailName = root.querySelector("[data-member-detail-name]");
+    const detailMeta = root.querySelector("[data-member-detail-meta]");
+
+    const inspectMember = (member) => {
+      if (!detail || !detailHex || !detailName || !detailMeta) return;
+      const hex = member.querySelector(".member-hex");
+      const heading = member.querySelector("h3");
+      const meta = member.querySelector(".member-card__meta");
+      const headingCopy = heading ? heading.cloneNode(true) : null;
+      headingCopy?.querySelector(".member-card__external")?.remove();
+
+      detailHex.replaceChildren();
+      if (hex) detailHex.innerHTML = hex.innerHTML;
+      detailName.textContent = headingCopy?.textContent.trim() || "";
+      detailMeta.replaceChildren();
+      if (meta) detailMeta.append(...[...meta.children].map((node) => node.cloneNode(true)));
+
+      root.classList.add("is-inspecting");
+      detail.setAttribute("aria-hidden", "false");
+    };
+
+    const clearInspection = () => {
+      root.classList.remove("is-inspecting");
+      if (detail) detail.setAttribute("aria-hidden", "true");
+    };
+
+    members.forEach((member) => {
+      const hex = member.querySelector(".member-hex");
+      if (!hex) return;
+      hex.addEventListener("pointerenter", () => inspectMember(member));
+      hex.addEventListener("pointerleave", clearInspection);
+      member.addEventListener("focus", () => inspectMember(member));
+      member.addEventListener("blur", clearInspection);
+    });
+  };
+
+  const initMemberConstellation = (root) => {
+    const orbit = root.querySelector(".member-constellation__orbit");
+    const members = [...root.querySelectorAll(".member-constellation__member")];
+    const slots = ["north", "upper-right", "lower-right", "lower-left", "upper-left"];
+
+    if (!orbit || members.length === 0) {
+      root.classList.add("is-ready");
+      return;
+    }
+
+    shuffle(members).forEach((member, index) => {
+      orbit.appendChild(member);
+      slots.forEach((slot) => member.classList.remove(`member-constellation__member--${slot}`));
+      if (slots[index]) member.classList.add(`member-constellation__member--${slots[index]}`);
+    });
+
+    const durationMs = 72000;
+    root.style.setProperty("--orbit-delay", `${-Math.random() * durationMs}ms`);
+    bindMemberInspect(root, members);
+    root.classList.add("is-ready");
+  };
+
+  const initMemberStack = (root) => {
+    const pile = root.querySelector(".member-stack__pile");
+    const members = [...root.querySelectorAll(".member-stack__member")];
+
+    if (!pile || members.length === 0) {
+      root.classList.add("is-ready");
+      return;
+    }
+
+    shuffle(members).forEach((member, index) => {
+      pile.appendChild(member);
+      [...member.classList].forEach((cls) => {
+        if (cls.startsWith("member-stack__member--s")) member.classList.remove(cls);
+      });
+      member.classList.add(`member-stack__member--s${index + 1}`);
+    });
+
+    bindMemberInspect(root, members);
+    root.classList.add("is-ready");
+  };
+
+  document.querySelectorAll("[data-member-constellation]").forEach(initMemberConstellation);
+  document.querySelectorAll("[data-member-stack]").forEach(initMemberStack);
+
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const observer = new IntersectionObserver((entries) => {

@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="AAAAA Lab member homepage template.">
   <title>[Member name] — AAAAA Lab</title>
+  {% include head-icons.html %}
   <link rel="stylesheet" href="../../assets/css/site.css">
   <!-- Add a member-specific stylesheet after the shared stylesheet when needed. -->
   <script src="../../assets/js/site.js" defer></script>
@@ -12,7 +16,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="site-header"><div class="site-header__inner"><a class="wordmark" href="../../index.html">AAAAA <small>LAB</small></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
+  <header class="site-header"><div class="site-header__inner"><div class="site-brand"><a class="wordmark" href="../../index.html">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button><nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false"><a href="../../index.html">Home</a><a href="../index.html" aria-current="page">People</a><a href="../../research/index.html">Research</a><a href="../../publication/index.html">Publication</a></nav></div></header>
   <main class="page-shell" id="main-content">
     <header class="detail-hero">
       <div><p class="eyebrow">Member homepage template</p><h1>[Member name]</h1></div>

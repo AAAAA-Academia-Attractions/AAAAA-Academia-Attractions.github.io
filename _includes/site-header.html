@@ -1,7 +1,7 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="wordmark" href="{{ '/index.html' | relative_url }}" aria-label="AAAAA Lab home">AAAAA <small>LAB</small></a>
+    <div class="site-brand"><a class="wordmark" href="{{ '/index.html' | relative_url }}" aria-label="AAAAA Lab home">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button>
     <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
       <a href="{{ '/index.html' | relative_url }}"{% if page.nav == 'home' %} aria-current="page"{% endif %}>Home</a>

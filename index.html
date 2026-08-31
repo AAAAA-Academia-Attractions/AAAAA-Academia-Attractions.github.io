@@ -10,6 +10,7 @@ nav: home
   <meta name="description" content="AAAAA Lab — advanced, agentic, adaptive, aspiring and autonomous research.">
   <meta name="theme-color" content="#F2F0E9">
   <title>AAAAA Lab</title>
+  {% include head-icons.html %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
@@ -19,7 +20,7 @@ nav: home
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="wordmark" href="index.html" aria-label="AAAAA Lab home">AAAAA <small>LAB</small></a>
+      <div class="site-brand"><a class="wordmark" href="index.html" aria-label="AAAAA Lab home">{% include site-mark.html %}<span class="wordmark__name">AAAAA <small>LAB</small></span></a>{% include site-presence.html %}</div>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation" data-menu-toggle><span></span></button>
       <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav data-open="false">
         <a href="index.html" aria-current="page">Home</a>
@@ -101,12 +102,21 @@ nav: home
         <a class="section-link" href="people/index.html">Meet the team <span aria-hidden="true">↗</span></a>
       </div>
       <p class="people-intro reveal">Researchers building advanced, adaptive and autonomous intelligence—together.</p>
-      <div class="member-honeycomb reveal" aria-label="AAAAA Lab members">
-        <a class="member-card" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></a>
-        <a class="member-card" href="people/member-02/index.html"><div class="member-hex">Portrait 02</div><h3>[Member 02]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
-        <a class="member-card" href="people/member-03/index.html"><div class="member-hex">Portrait 03</div><h3>[Member 03]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
-        <a class="member-card" href="people/member-04/index.html"><div class="member-hex">Portrait 04</div><h3>[Member 04]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
-        <a class="member-card" href="people/member-05/index.html"><div class="member-hex">Portrait 05</div><h3>[Member 05]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></a>
+      <div class="member-constellation reveal" data-member-constellation aria-label="AAAAA Lab core members">
+        <div class="member-constellation__orbit">
+          <a class="member-card member-constellation__member member-constellation__member--north" href="https://stevenyuan666.github.io/" target="_blank" rel="noopener noreferrer" aria-label="Ye Yuan — open personal website"><div class="member-hex"><img class="member-portrait--ye" src="assets/images/people/ye-yuan.jpg" alt="Portrait of Ye Yuan"></div><div class="member-constellation__identity"><h3>Ye Yuan <span class="member-card__external" aria-hidden="true">↗</span></h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>Ph.D. Candidate</li><li><span class="visually-hidden">Institution: </span>McGill University · Mila</li><li><span class="visually-hidden">Research focus: </span>Generative AI · BBO · Agents</li></ul></div></a>
+          <a class="member-card member-constellation__member member-constellation__member--upper-right" href="people/member-02/index.html" aria-label="Member 02"><div class="member-hex">Portrait 02</div><div class="member-constellation__identity"><h3>[Member 02]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+          <a class="member-card member-constellation__member member-constellation__member--lower-right" href="people/member-03/index.html" aria-label="Member 03"><div class="member-hex">Portrait 03</div><div class="member-constellation__identity"><h3>[Member 03]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+          <a class="member-card member-constellation__member member-constellation__member--lower-left" href="people/member-04/index.html" aria-label="Member 04"><div class="member-hex">Portrait 04</div><div class="member-constellation__identity"><h3>[Member 04]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+          <a class="member-card member-constellation__member member-constellation__member--upper-left" href="people/member-05/index.html" aria-label="Member 05"><div class="member-hex">Portrait 05</div><div class="member-constellation__identity"><h3>[Member 05]</h3><ul class="member-card__meta"><li><span class="visually-hidden">Role: </span>[Role]</li><li><span class="visually-hidden">Institution: </span>[Institution]</li><li><span class="visually-hidden">Research focus: </span>[Research focus]</li></ul></div></a>
+        </div>
+        <aside class="member-constellation__detail" data-member-detail aria-hidden="true">
+          <div class="member-constellation__detail-body">
+            <div class="member-hex" data-member-detail-hex></div>
+            <h3 data-member-detail-name></h3>
+            <ul class="member-card__meta" data-member-detail-meta></ul>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
