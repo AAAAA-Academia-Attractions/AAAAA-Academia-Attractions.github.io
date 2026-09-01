@@ -17,7 +17,21 @@
   <main class="page-shell" id="main-content">
     {% assign area_slug = page.name | remove: '.md' %}
     {% include project-sources.html %}
-    {% assign related_projects = catalog | where: "research_area_slug", area_slug %}
+    {% assign related_projects = "" | split: "," %}
+    {% for project in catalog %}
+      {% assign area_match = false %}
+      {% if project.research_area_slug == area_slug %}
+        {% assign area_match = true %}
+      {% endif %}
+      {% for area in project.research_areas %}
+        {% if area.slug == area_slug %}
+          {% assign area_match = true %}
+        {% endif %}
+      {% endfor %}
+      {% if area_match %}
+        {% assign related_projects = related_projects | push: project %}
+      {% endif %}
+    {% endfor %}
     <header class="detail-hero research-area-hero">
       <div>
         <p class="eyebrow">Research{% if page.parent_area %} / {{ page.parent_area }}{% endif %}</p>
@@ -26,7 +40,6 @@
       </div>
       <aside class="detail-hero__aside">
         <dl>
-          <dt>Lead</dt><dd>{{ page.lead }}</dd>
           <dt>Keywords</dt><dd><div class="keyword-list">{% if page.keywords.size > 0 %}{% for keyword in page.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}{% else %}<span>[Add keywords]</span>{% endif %}</div></dd>
         </dl>
       </aside>

@@ -3,7 +3,6 @@ title: Information Retrieval
 nav: research
 parent_area: Algorithm
 summary: "Retrieving visually rich documents without giving up the storage and serving cost of a single dense vector."
-lead: Weien Li
 keywords:
   - Visual document retrieval
   - Dense retrieval

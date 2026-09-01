@@ -3,7 +3,6 @@ title: Discrete Diffusion
 nav: research
 parent_area: Algorithm
 summary: "A tokenization-first view of discrete denoising diffusion, from state-space design through training, sampling, and evaluation."
-lead: Ye Yuan
 keywords:
   - Discrete diffusion
   - Tokenization

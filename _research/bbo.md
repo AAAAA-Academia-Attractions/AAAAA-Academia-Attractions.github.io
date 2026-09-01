@@ -3,7 +3,6 @@ title: BBO
 nav: research
 parent_area: Algorithm
 summary: "Finding high-scoring designs from a static dataset, without an online oracle, while staying on the support of the observed data."
-lead: Yonghan Yang
 keywords:
   - Offline BBO
   - Diffusion surrogate

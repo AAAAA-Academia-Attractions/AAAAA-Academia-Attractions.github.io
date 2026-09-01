@@ -3,7 +3,6 @@ title: Finance
 nav: research
 parent_area: Agent
 summary: "[Add a concise introduction to the Finance agent research direction.]"
-lead: "[Lead member]"
 keywords: []
 ---
 

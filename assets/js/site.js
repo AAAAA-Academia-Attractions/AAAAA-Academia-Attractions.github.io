@@ -262,7 +262,7 @@
         const haystack = card.dataset.search || "";
         const keywords = (card.dataset.keywords || "").split("|").filter(Boolean);
         const show = (!query || haystack.includes(query))
-          && (!state.area || card.dataset.area === state.area)
+          && (!state.area || (card.dataset.area || "").split("|").includes(state.area))
           && (!state.status || card.dataset.status === state.status)
           && state.keywords.every((keyword) => keywords.includes(keyword));
         card.hidden = !show;

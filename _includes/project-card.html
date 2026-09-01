@@ -8,13 +8,20 @@
 {% assign keyword_text = project.keywords | join: ' ' %}
 {% assign member_text = project.members | join: ' · ' %}
 {% assign author_text = project.authors | join: ' · ' %}
-{% assign search_text = project.title | append: ' ' | append: project.summary | append: ' ' | append: project.research_area | append: ' ' | append: keyword_text | append: ' ' | append: member_text | append: ' ' | append: author_text | append: ' ' | append: project.venue %}
-<a class="project-card" href="{{ project.url | relative_url }}" data-project-card data-status="{{ project_status }}" data-area="{{ project.research_area_slug }}" data-keywords="{{ project.keywords | join: '|' | downcase }}" data-search="{{ search_text | downcase | escape }}">
+{% if project.research_areas %}
+  {% assign area_labels = project.research_areas | map: "title" | join: " · " %}
+  {% assign area_attr = project.research_areas | map: "slug" | join: "|" %}
+{% else %}
+  {% assign area_labels = project.research_area %}
+  {% assign area_attr = project.research_area_slug %}
+{% endif %}
+{% assign search_text = project.title | append: ' ' | append: project.summary | append: ' ' | append: area_labels | append: ' ' | append: keyword_text | append: ' ' | append: member_text | append: ' ' | append: author_text | append: ' ' | append: project.venue %}
+<a class="project-card" href="{{ project.url | relative_url }}" data-project-card data-status="{{ project_status }}" data-area="{{ area_attr }}" data-keywords="{{ project.keywords | join: '|' | downcase }}" data-search="{{ search_text | downcase | escape }}">
   <div class="project-card__top">
     <span class="project-status project-status--{{ project_status }}"><i aria-hidden="true"></i>{{ status_label }}</span>
     <span class="project-card__arrow" aria-hidden="true">↗</span>
   </div>
-  {% if project.research_area %}<p class="project-card__area">{{ project.research_area }}</p>{% endif %}
+  {% if area_labels != "" %}<p class="project-card__area">{{ area_labels }}</p>{% endif %}
   <div class="keyword-list">
     {% for keyword in project.keywords %}<span class="keyword">{{ keyword }}</span>{% endfor %}
   </div>

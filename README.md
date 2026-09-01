@@ -145,7 +145,6 @@ title: Social Deduction
 nav: research
 parent_area: Evaluation
 summary: One or two sentences shown under the title.
-lead: Member name
 keywords:
   - Keyword
 ```
@@ -161,7 +160,7 @@ Related projects appear when an on-going or published project uses the same `res
 
 1. Add it under the right main area in `_data/research_hierarchy.yml`.
 2. Copy `_research/area-template.md` to `_research/your-slug.md`.
-3. Fill title, parent, summary, lead, keywords, and the two Markdown sections.
+3. Fill title, parent, summary, keywords, and the two Markdown sections.
 
 ### Publication — `publication/index.html`
 

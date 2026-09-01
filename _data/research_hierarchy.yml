@@ -5,6 +5,12 @@
       slug: bbo
     - title: Information Retrieval
       slug: information-retrieval
+    - title: Multimodal Learning
+      slug: multimodal-learning
+    - title: Representation Learning
+      slug: representation-learning
+    - title: Efficient AI
+      slug: efficient-ai
     - title: Discrete Diffusion
       slug: discrete-diffusion
 

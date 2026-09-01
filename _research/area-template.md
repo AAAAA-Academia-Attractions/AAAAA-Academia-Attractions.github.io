@@ -3,7 +3,6 @@ title: "[Research Area Name]"
 nav: research
 parent_area: "[Main Area Name]"
 summary: "[A concise explanation of the shared question, methods, and scope of this research area.]"
-lead: "[Lead member]"
 keywords:
   - Keyword 01
   - Keyword 02

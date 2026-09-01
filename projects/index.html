@@ -12,7 +12,7 @@ permalink: /projects/
   <title>Projects — AAAAA Lab</title>
   {% include head-icons.html %}
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
-  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/site.js' | relative_url }}?v=2" defer></script>
 </head>
 <body>
   {% include site-header.html %}
@@ -37,15 +37,22 @@ permalink: /projects/
               <dt>Area</dt>
               <dd class="keyword-list" data-filter-group="area">
                 <button class="project-chip is-active" type="button" data-filter-area="">All</button>
-                {% assign seen_areas = "|" %}
+                {% assign catalog_slugs = "|" %}
                 {% for project in catalog %}
-                  {% assign area_token = "|" | append: project.research_area_slug | append: "|" %}
-                  {% unless seen_areas contains area_token %}
-                    {% if project.research_area_slug %}
-                      <button class="project-chip" type="button" data-filter-area="{{ project.research_area_slug }}">{{ project.research_area }}</button>
-                      {% assign seen_areas = seen_areas | append: project.research_area_slug | append: "|" %}
+                  {% if project.research_area_slug %}
+                    {% assign catalog_slugs = catalog_slugs | append: project.research_area_slug | append: "|" %}
+                  {% endif %}
+                  {% for area in project.research_areas %}
+                    {% assign catalog_slugs = catalog_slugs | append: area.slug | append: "|" %}
+                  {% endfor %}
+                {% endfor %}
+                {% for cluster in site.data.research_hierarchy %}
+                  {% for area in cluster.areas %}
+                    {% assign area_token = "|" | append: area.slug | append: "|" %}
+                    {% if catalog_slugs contains area_token %}
+                      <button class="project-chip" type="button" data-filter-area="{{ area.slug }}">{{ area.title }}</button>
                     {% endif %}
-                  {% endunless %}
+                  {% endfor %}
                 {% endfor %}
               </dd>
             </div>

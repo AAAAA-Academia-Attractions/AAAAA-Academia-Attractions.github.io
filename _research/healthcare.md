@@ -3,7 +3,6 @@ title: Healthcare
 nav: research
 parent_area: Agent
 summary: "[Add a concise introduction to the Healthcare agent research direction.]"
-lead: "[Lead member]"
 keywords: []
 ---
 

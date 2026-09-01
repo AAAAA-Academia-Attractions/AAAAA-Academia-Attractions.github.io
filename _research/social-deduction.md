@@ -3,7 +3,6 @@ title: Social Deduction
 nav: research
 parent_area: Evaluation
 summary: "Evaluating whether agent language stays grounded in what the agent perceived, did, and claimed during multimodal social interaction."
-lead: Ye Yuan
 keywords:
   - Grounding
   - Multi-agent
