@@ -1,5 +1,5 @@
 ---
-title: Weien Li
+title: Weien (Barry) Li
 hex_label: WL
 role: Incoming Machine Learning Scientist
 institution: Wayfair
