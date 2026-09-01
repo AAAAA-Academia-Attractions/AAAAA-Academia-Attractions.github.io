@@ -1,0 +1,19 @@
+# Photos on /people/rui-song/site/misc/
+#
+# Qingdao  →  people/rui-song/site/photos/qingdao/<file>
+# Selected →  people/rui-song/site/photos/selected/<id>/<file>
+# Then add the filename here (theme + place live on the series).
+
+qingdao: []
+# - file: zhanqiao.jpg
+#   caption: Zhanqiao Pier
+#   place: Shinan
+
+selected: []
+# - id: night-harbour
+#   title: Night harbour
+#   theme: Night
+#   place: Qingdao
+#   photos:
+#     - file: 01.jpg
+#       caption: From the pier

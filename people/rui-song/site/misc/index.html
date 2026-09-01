@@ -1,0 +1,69 @@
+---
+layout: null
+nav: people
+permalink: /people/rui-song/site/misc/
+rui_section: misc
+title: Misc
+description: Qingdao, and photographs by Rui Song.
+---
+{% include rui-song-open.html %}
+{% assign qingdao_shots = site.data.rui_song_photos.qingdao | default: empty %}
+{% assign photo_series = site.data.rui_song_photos.selected | default: empty %}
+<main class="rs-main" id="main">
+  <header>
+    <h1 class="rs-page-title">Misc</h1>
+  </header>
+
+  <div class="rs-prose">
+    <p>I was born in Qingdao 青岛 (also spelled Tsingtao), a port city on the Yellow Sea in Shandong Province, China. About 10.5 million people live there. Qingdao is one of Shandong’s economic centers and one of China’s busiest seaports: a city of granite shoreline and German-era streets, of <a href="https://en.wikipedia.org/wiki/Tsingtao_Brewery" target="_blank" rel="noopener noreferrer">Tsingtao beer</a> (brewed here since 1903), and of companies such as Haier and Hisense. It hosted the sailing events of the 2008 Summer Olympics. Laoshan stands just outside the city; closer in are the beaches and the old villas of Badaguan. The local table is seafood and beer — clams, sea cucumber, and the brew the rest of the world already knows the city’s other name by.</p>
+  </div>
+
+  {% if qingdao_shots.size > 0 %}
+  <div class="rs-frames" aria-label="Qingdao">
+    {% for shot in qingdao_shots %}
+    <figure class="rs-frame">
+      <img src="{{ '/people/rui-song/site/photos/qingdao/' | append: shot.file | relative_url }}" alt="{{ shot.caption | default: 'Qingdao' | escape }}">
+      {% if shot.caption or shot.place %}
+      <figcaption>{% if shot.caption %}{{ shot.caption }}{% endif %}{% if shot.caption and shot.place %} · {% endif %}{% if shot.place %}{{ shot.place }}{% endif %}</figcaption>
+      {% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="rs-frames" aria-label="Qingdao photographs">
+    <figure class="rs-frame is-empty"><figcaption>Qingdao</figcaption></figure>
+    <figure class="rs-frame is-empty"><figcaption>Qingdao</figcaption></figure>
+    <figure class="rs-frame is-empty"><figcaption>Qingdao</figcaption></figure>
+  </div>
+  {% endif %}
+
+  <section class="rs-section" aria-labelledby="photo-heading">
+    <h2 id="photo-heading">Photography</h2>
+    <div class="rs-prose">
+      <p>I photograph in my spare time. I shoot with a Sony α7R II and my iPhone.</p>
+    </div>
+  </section>
+
+  <section class="rs-section" aria-labelledby="selected-heading">
+    <h2 id="selected-heading">Selected photos</h2>
+    <p class="rs-page-lead">Grouped by theme and place.</p>
+
+    {% if photo_series.size > 0 %}
+      {% for series in photo_series %}
+      <article class="rs-series" id="{{ series.id }}">
+        <p class="rs-series__meta">{{ series.theme }} · {{ series.place }}</p>
+        <h3>{{ series.title }}</h3>
+        <div class="rs-frames">
+          {% for shot in series.photos %}
+          <figure class="rs-frame">
+            <img src="{{ '/people/rui-song/site/photos/selected/' | append: series.id | append: '/' | append: shot.file | relative_url }}" alt="{{ shot.caption | default: series.title | escape }}">
+            {% if shot.caption %}<figcaption>{{ shot.caption }}</figcaption>{% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    {% endif %}
+  </section>
+</main>
+{% include rui-song-close.html %}

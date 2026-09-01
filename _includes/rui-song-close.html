@@ -1,0 +1,16 @@
+<footer class="rs-foot">
+  <nav aria-label="Related profiles">
+    <a href="{{ '/people/rui-song/' | relative_url }}">AAAAA Lab profile</a>
+    <a href="{{ '/people/' | relative_url }}">People</a>
+  </nav>
+  {% if site.data.rui_song.visitor_map and site.data.rui_song.visitor_map_id and site.data.rui_song.visitor_map_id != "" %}
+  <div class="rs-visitors">
+    <p class="rs-visitors__label">Visitors</p>
+    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d={{ site.data.rui_song.visitor_map_id }}&amp;cl=ffffff&amp;w=264"></script>
+  </div>
+  {% endif %}
+  <p>© 2026 Rui Song.</p>
+</footer>
+<script src="{{ '/people/rui-song/site/js/nav.js' | relative_url }}" defer></script>
+</body>
+</html>

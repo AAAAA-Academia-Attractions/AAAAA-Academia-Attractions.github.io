@@ -1162,6 +1162,14 @@ p {
   object-position: center 58%;
 }
 
+.member-hex .member-portrait--rui {
+  inset: auto;
+  width: 140%;
+  height: 140%;
+  top: -30%;
+  left: 5%;
+}
+
 .member-card:hover .member-hex img {
   transform: scale(1.025);
 }

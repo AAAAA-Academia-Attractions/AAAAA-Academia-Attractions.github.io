@@ -30,7 +30,7 @@
           {% if page.institution %}<dt>Institution</dt><dd>{{ page.institution }}</dd>{% endif %}
           {% if page.focus %}<dt>Focus</dt><dd>{{ page.focus }}</dd>{% endif %}
           {% if page.email %}<dt>Email</dt><dd><a class="text-link" href="mailto:{{ page.email }}">{{ page.email }}</a></dd>{% endif %}
-          {% if page.website or page.scholar or page.github or page.cv %}
+          {% if page.website or page.scholar or page.github or page.linkedin or page.resume or page.cv %}
           <dt>Links</dt>
           <dd class="member-links">
             {% if page.website %}
@@ -42,6 +42,14 @@
             {% endif %}
             {% if page.scholar %}<a class="text-link" href="{{ page.scholar }}" target="_blank" rel="noopener noreferrer">Scholar ↗</a>{% endif %}
             {% if page.github %}<a class="text-link" href="{{ page.github }}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>{% endif %}
+            {% if page.linkedin %}<a class="text-link" href="{{ page.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>{% endif %}
+            {% if page.resume %}
+              {% if page.resume contains "://" %}
+            <a class="text-link" href="{{ page.resume }}" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+              {% else %}
+            <a class="text-link" href="{{ page.resume | relative_url }}" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+              {% endif %}
+            {% endif %}
             {% if page.cv %}<a class="text-link" href="{{ page.cv }}" target="_blank" rel="noopener noreferrer">CV ↗</a>{% endif %}
           </dd>
           {% endif %}

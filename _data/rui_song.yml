@@ -1,0 +1,8 @@
+# Personal-site extras for Rui Song.
+# Visitor map: generate a widget at https://mapmyvisitors.com/
+# Site URL: https://aaaaa-academia-attractions.github.io/people/rui-song/site/
+# Paste the `d=` value from the embed script below.
+# Hidden while MapMyVisitors geolocation is broken (unknown-location fallback).
+
+visitor_map: false
+visitor_map_id: "NItNBr_9K3GwcoC_HkxpRiJTYZHNse6fqOyMud4o60g"

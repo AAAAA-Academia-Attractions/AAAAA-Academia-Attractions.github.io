@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | default: 'Rui Song — personal academic site.' | escape }}">
+  <title>{% if page.rui_section and page.rui_section != "about" %}{{ page.title }} | {% endif %}Rui Song</title>
+  {% include head-icons.html %}
+  <link rel="stylesheet" href="{{ '/people/rui-song/site/css/site.css' | relative_url }}">
+</head>
+<body class="rs-body">
+{% include rui-song-nav.html %}
