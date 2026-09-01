@@ -14,22 +14,34 @@ description: Qingdao, and photographs by Rui Song.
     <h1 class="rs-page-title">Misc</h1>
   </header>
 
-  <div class="rs-prose">
-    <p>I was born in Qingdao 青岛 (also spelled Tsingtao), a port city on the Yellow Sea in Shandong Province, China. About 10.5 million people live there. Qingdao is one of Shandong’s economic centers and one of China’s busiest seaports: a city of granite shoreline and German-era streets, of <a href="https://en.wikipedia.org/wiki/Tsingtao_Brewery" target="_blank" rel="noopener noreferrer">Tsingtao beer</a> (brewed here since 1903), and of companies such as Haier and Hisense. It hosted the sailing events of the 2008 Summer Olympics. Laoshan stands just outside the city; closer in are the beaches and the old villas of Badaguan. The local table is seafood and beer — clams, sea cucumber, and the brew the rest of the world already knows the city’s other name by.</p>
-  </div>
-
   {% if qingdao_shots.size > 0 %}
-  <div class="rs-frames" aria-label="Qingdao">
-    {% for shot in qingdao_shots %}
-    <figure class="rs-frame">
+  <div class="rs-qingdao">
+    <div class="rs-prose rs-qingdao__copy">
+      <p>I was born in Qingdao 青岛 (also spelled Tsingtao), a port city on the Yellow Sea in Shandong Province, China. About 10.5 million people live there. Qingdao is one of Shandong’s economic centers and one of China’s busiest seaports: a city of granite shoreline and German-era streets, of <a href="https://en.wikipedia.org/wiki/Tsingtao_Brewery" target="_blank" rel="noopener noreferrer">Tsingtao beer</a> (brewed here since 1903), and of companies such as Haier and Hisense. It hosted the sailing events of the 2008 Summer Olympics. Laoshan stands just outside the city; closer in are the beaches and the old villas of Badaguan. The local table is seafood and beer — clams, sea cucumber, and the brew the rest of the world already knows the city’s other name by.</p>
+    </div>
+    {% for shot in qingdao_shots limit:1 %}
+    <figure class="rs-frame rs-qingdao__portrait">
       <img src="{{ '/people/rui-song/site/photos/qingdao/' | append: shot.file | relative_url }}" alt="{{ shot.caption | default: 'Qingdao' | escape }}">
       {% if shot.caption or shot.place %}
       <figcaption>{% if shot.caption %}{{ shot.caption }}{% endif %}{% if shot.caption and shot.place %} · {% endif %}{% if shot.place %}{{ shot.place }}{% endif %}</figcaption>
       {% endif %}
     </figure>
     {% endfor %}
+    <div class="rs-qingdao__stack" aria-label="Qingdao">
+      {% for shot in qingdao_shots offset:1 %}
+      <figure class="rs-frame">
+        <img src="{{ '/people/rui-song/site/photos/qingdao/' | append: shot.file | relative_url }}" alt="{{ shot.caption | default: 'Qingdao' | escape }}">
+        {% if shot.caption or shot.place %}
+        <figcaption>{% if shot.caption %}{{ shot.caption }}{% endif %}{% if shot.caption and shot.place %} · {% endif %}{% if shot.place %}{{ shot.place }}{% endif %}</figcaption>
+        {% endif %}
+      </figure>
+      {% endfor %}
+    </div>
   </div>
   {% else %}
+  <div class="rs-prose">
+    <p>I was born in Qingdao 青岛 (also spelled Tsingtao), a port city on the Yellow Sea in Shandong Province, China. About 10.5 million people live there. Qingdao is one of Shandong’s economic centers and one of China’s busiest seaports: a city of granite shoreline and German-era streets, of <a href="https://en.wikipedia.org/wiki/Tsingtao_Brewery" target="_blank" rel="noopener noreferrer">Tsingtao beer</a> (brewed here since 1903), and of companies such as Haier and Hisense. It hosted the sailing events of the 2008 Summer Olympics. Laoshan stands just outside the city; closer in are the beaches and the old villas of Badaguan. The local table is seafood and beer — clams, sea cucumber, and the brew the rest of the world already knows the city’s other name by.</p>
+  </div>
   <div class="rs-frames" aria-label="Qingdao photographs">
     <figure class="rs-frame is-empty"><figcaption>Qingdao</figcaption></figure>
     <figure class="rs-frame is-empty"><figcaption>Qingdao</figcaption></figure>

@@ -4,10 +4,14 @@
 # Selected →  people/rui-song/site/photos/selected/<id>/<file>
 # Then add the filename here (theme + place live on the series).
 
-qingdao: []
-# - file: zhanqiao.jpg
-#   caption: Zhanqiao Pier
-#   place: Shinan
+qingdao:
+  - file: from-the-water.jpg
+    caption: Zhanqiao 栈桥
+  - file: the-bay.jpg
+    caption: Qingshan fishing village 青山渔村
+    place: Laoshan
+  - file: seafood.jpg
+    caption: Hometown food 家乡美食
 
 selected: []
 # - id: night-harbour

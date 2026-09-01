@@ -197,29 +197,77 @@ p {
 
 .rs-hero {
   display: grid;
-  gap: 1.8rem 2.4rem;
+  gap: 1.6rem 2.8rem;
   padding-bottom: 2.1rem;
   border-bottom: 1px solid var(--line);
   align-items: start;
+  justify-content: start;
+}
+
+.rs-portrait {
+  width: min(22rem, 100%);
+  margin: 0;
 }
 
 .rs-photo {
-  width: 10.5rem;
-  aspect-ratio: 1;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 0.28rem;
   background: #ddd8cc;
   box-shadow: 0 0 0 1px var(--line);
 }
 
 .rs-photo img {
-  position: relative;
-  width: 140%;
-  height: 140%;
-  max-width: none;
-  top: -30%;
-  left: -7%;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: 42% 100%;
+  transform: scale(1.06);
+  transform-origin: 42% 100%;
+}
+
+.rs-epigraph {
+  margin: 0.8rem 0 0;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.rs-epigraph p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.rs-epigraph p + p {
+  margin-top: 0.45rem;
+}
+
+.rs-epigraph__attr {
+  margin-top: 0.18rem !important;
+  color: var(--brass);
+  font-size: 0.7rem;
+  font-style: normal;
+  letter-spacing: 0.04em;
+}
+
+.rs-epigraph p[lang="zh-Hans"] {
+  font-family: var(--serif), "Songti SC", "STSong", "Noto Serif SC", "SimSun", serif;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.rs-hero__copy {
+  max-width: 26.5rem;
+}
+
+.rs-hero__copy .rs-lead,
+.rs-hero__copy .rs-prose p {
+  max-width: none;
 }
 
 .rs-kicker {
@@ -535,6 +583,46 @@ p {
   background: #e4dfd3;
 }
 
+.rs-qingdao {
+  display: grid;
+  grid-template-columns: 28rem 24rem minmax(0, 1fr);
+  grid-template-areas:
+    "copy copy copy"
+    "portrait stack .";
+  column-gap: 1.5rem;
+  row-gap: 1.1rem;
+  align-items: start;
+  margin-top: 0.35rem;
+}
+
+.rs-qingdao__copy {
+  grid-area: copy;
+}
+
+.rs-qingdao__copy p {
+  max-width: none;
+}
+
+.rs-qingdao__portrait {
+  grid-area: portrait;
+  width: 28rem;
+}
+
+.rs-qingdao__stack {
+  grid-area: stack;
+  display: grid;
+  gap: 0.85rem;
+  width: 24rem;
+}
+
+.rs-qingdao .rs-frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
 .rs-frame.is-empty {
   aspect-ratio: 3 / 2;
   background: var(--paper-2);
@@ -635,7 +723,7 @@ p {
   }
 
   .rs-hero {
-    grid-template-columns: 10.5rem minmax(0, 1fr);
+    grid-template-columns: minmax(18rem, 22rem) minmax(0, 26.5rem);
   }
 }
 
@@ -663,5 +751,22 @@ p {
 
   .rs-frames {
     grid-template-columns: 1fr;
+  }
+
+  .rs-qingdao {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "portrait"
+      "stack";
+  }
+
+  .rs-qingdao__portrait,
+  .rs-qingdao__stack {
+    width: min(28rem, 100%);
+  }
+
+  .rs-qingdao__stack {
+    width: min(24rem, 100%);
   }
 }
