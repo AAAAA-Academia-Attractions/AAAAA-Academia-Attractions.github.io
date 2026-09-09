@@ -7,8 +7,8 @@ nav: people
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="People at AAAAA Lab.">
-  <title>People — AAAAA Lab</title>
+  <meta name="description" content="People at AAAAA Community.">
+  <title>People — AAAAA Community</title>
   {% include head-icons.html %}
   <link rel="stylesheet" href="../assets/css/site.css">
   <script src="../assets/js/site.js" defer></script>
@@ -16,10 +16,10 @@ nav: people
 <body>
   {% include site-header.html %}
   <main class="page-shell" id="main-content">
-    <header class="page-hero"><div><p class="eyebrow">The lab</p><h1 class="page-title">People</h1></div><p class="page-lead">Each portrait opens a shared lab introduction. Personal websites, when they exist, are linked from that page.</p></header>
+    <header class="page-hero"><div><p class="eyebrow">The community</p><h1 class="page-title">People</h1></div><p class="page-lead">Each portrait opens a shared community introduction. Personal websites, when they exist, are linked from that page.</p></header>
     <section class="section" aria-label="Member directory">
       {% include people-sources.html %}
-      <div class="member-stack" data-member-stack aria-label="AAAAA Lab members">
+      <div class="member-stack" data-member-stack aria-label="AAAAA Community members">
         <div class="member-stack__pile">
           {% for person in listed_people %}{% include member-card.html person=person extra_class="member-stack__member" identity_class="member-stack__identity" %}{% endfor %}
         </div>

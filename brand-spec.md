@@ -1,10 +1,10 @@
-# AAAAA Lab brand specification
+# AAAAA Community brand specification
 
 This file documents the shared visual system used by the public HTML pages. It is project documentation, not a website content page.
 
 ## Identity
 
-- Wordmark: the supplied `AAAAA LAB` typographic mark from the reference HTML.
+- Wordmark: `AAAAA Community`, paired with the circular emblem in `assets/images/brand/aaaaa-community.png`.
 - Full line: `Advanced · Analytical · Adaptive · Adventurous · Aspiring`.
 - Tone: academic, editorial, precise, and quietly experimental.
 
@@ -24,7 +24,7 @@ This file documents the shared visual system used by the public HTML pages. It i
 
 ## Asset status
 
-- Official standalone logo asset: not supplied; the provided typographic wordmark is preserved.
+- Official logo: `assets/images/brand/aaaaa-community.png`, with favicon variants in `assets/images/brand/favicon.png`, `assets/apple-touch-icon.png`, and `favicon.ico`.
 - Ye Yuan portrait: `assets/images/people/ye-yuan.jpg`, sourced from his official personal website (`https://stevenyuan666.github.io/assets/img/profile_photo.jpg`).
 - Remaining member portraits: pending. Their cards use explicit portrait placeholders until real images are added.
 - Publication/project media: pending. Project pages include honest demo and media slots.

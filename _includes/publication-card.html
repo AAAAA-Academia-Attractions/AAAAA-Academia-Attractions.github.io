@@ -1,0 +1,13 @@
+{% assign project = include.project %}
+<a class="publication-card" href="{{ project.url | relative_url }}"{% if include.hidden %} aria-hidden="true" tabindex="-1"{% endif %}>
+  <span class="publication-card__year">{{ project.year | default: 'YYYY' }}</span><span class="publication-card__arrow" aria-hidden="true">↗</span>
+  <h3>{{ project.title }}</h3>
+  <div class="publication-card__foot">
+    {% if project.venue %}<p>{{ project.venue }}</p>{% endif %}
+    {% if project.keywords.size > 0 %}
+    <div class="publication-card__tags">
+      {% for keyword in project.keywords limit: 3 %}<span class="keyword">{{ keyword }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</a>

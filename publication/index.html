@@ -7,8 +7,8 @@ nav: publication
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Published work from AAAAA Lab.">
-  <title>Publication — AAAAA Lab</title>
+  <meta name="description" content="Published work from AAAAA Community.">
+  <title>Publication — AAAAA Community</title>
   {% include head-icons.html %}
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
@@ -16,19 +16,12 @@ nav: publication
 <body>
   {% include site-header.html %}
   <main class="page-shell" id="main-content">
-    <header class="page-hero"><div><p class="eyebrow">Papers · Venues · Demos</p><h1 class="page-title">Publication</h1></div><p class="page-lead">Published projects from the lab directory. Each card opens the project homepage, which can host video, Canvas, WebGL, interactive models or custom JavaScript.</p></header>
+    <header class="page-hero"><div><p class="eyebrow">Papers · Venues · Demos</p><h1 class="page-title">Publication</h1></div><p class="page-lead">Published projects from the community directory. Each card opens the project homepage, which can host video, Canvas, WebGL, interactive models or custom JavaScript.</p></header>
     <section class="section section--pine" aria-label="Publication directory">
       {% include project-sources.html %}
       <div class="publication-grid">
         {% for project in published_projects %}
-        {% assign credit = project.authors | default: project.members %}
-        {% if credit.size > 4 %}{% assign credit_line = credit | slice: 0, 3 | join: ' · ' | append: ' et al.' %}{% else %}{% assign credit_line = credit | join: ' · ' %}{% endif %}
-        <a class="publication-card" href="{{ project.url | relative_url }}">
-          <span class="publication-card__year">{{ project.year | default: 'YYYY' }}</span>
-          <span class="publication-card__arrow" aria-hidden="true">↗</span>
-          <h3>{{ project.title }}</h3>
-          <p>{{ credit_line }}{% if project.venue %} · {{ project.venue }}{% endif %}</p>
-        </a>
+        {% include publication-card.html project=project %}
         {% endfor %}
         {% if published_projects.size == 0 %}
         <div class="project-empty-state">

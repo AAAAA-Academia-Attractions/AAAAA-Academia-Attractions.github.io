@@ -26,22 +26,6 @@
     });
   }
 
-  const heroReveal = document.querySelector("[data-hero-reveal]");
-  if (heroReveal && window.matchMedia("(hover: none)").matches) {
-    const toggleHero = () => {
-      const revealed = heroReveal.classList.toggle("is-revealed");
-      if (!revealed) heroReveal.blur();
-    };
-    heroReveal.addEventListener("click", (event) => {
-      if (!event.target.closest("a, button, input")) toggleHero();
-    });
-    heroReveal.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" && event.key !== " ") return;
-      event.preventDefault();
-      toggleHero();
-    });
-  }
-
   document.querySelectorAll("[data-tabs]").forEach((tabGroup) => {
     const tabs = [...tabGroup.querySelectorAll('[role="tab"]')];
     const panels = [...tabGroup.querySelectorAll('[role="tabpanel"]')];
@@ -165,28 +149,6 @@
     });
   };
 
-  const initMemberConstellation = (root) => {
-    const orbit = root.querySelector(".member-constellation__orbit");
-    const members = [...root.querySelectorAll(".member-constellation__member")];
-    const slots = ["north", "upper-right", "lower-right", "lower-left", "upper-left"];
-
-    if (!orbit || members.length === 0) {
-      root.classList.add("is-ready");
-      return;
-    }
-
-    shuffle(members).forEach((member, index) => {
-      orbit.appendChild(member);
-      slots.forEach((slot) => member.classList.remove(`member-constellation__member--${slot}`));
-      if (slots[index]) member.classList.add(`member-constellation__member--${slots[index]}`);
-    });
-
-    const durationMs = 72000;
-    root.style.setProperty("--orbit-delay", `${-Math.random() * durationMs}ms`);
-    bindMemberInspect(root, members);
-    root.classList.add("is-ready");
-  };
-
   const initMemberStack = (root) => {
     const pile = root.querySelector(".member-stack__pile");
     const members = [...root.querySelectorAll(".member-stack__member")];
@@ -208,7 +170,6 @@
     root.classList.add("is-ready");
   };
 
-  document.querySelectorAll("[data-member-constellation]").forEach(initMemberConstellation);
   document.querySelectorAll("[data-member-stack]").forEach(initMemberStack);
 
   const initProjectCatalog = (root) => {
