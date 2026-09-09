@@ -1,8 +1,8 @@
 ---
 title: Weien (Barry) Li
 hex_label: WL
-role: Incoming Machine Learning Scientist
-institution: Wayfair
+role: Machine Learning Scientist
+institution: Wayfair · McGill
 focus: Information retrieval · LLM agents · Secret :)
 email: barryl09@alum.mit.edu
 portrait: /assets/images/people/Barry.jpeg
