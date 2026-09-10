@@ -1416,32 +1416,8 @@ p {
   line-height: 1.48;
 }
 
-.project-card:hover .project-card__summary,
-.project-card:hover .project-card__members span {
+.project-card:hover .project-card__summary {
   color: var(--sage);
-}
-
-.project-card__members {
-  margin-top: auto;
-  padding-top: 1.35rem;
-  border-top: 1px solid var(--line);
-}
-
-.project-card:hover .project-card__members {
-  border-color: var(--line-light);
-}
-
-.project-card__members span {
-  color: rgb(23 28 26 / 52%);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.project-card__members p {
-  margin-top: 0.45rem;
-  font-size: 0.78rem;
 }
 
 .project-card__area {
