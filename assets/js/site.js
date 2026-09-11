@@ -313,6 +313,16 @@
     document.querySelectorAll("[data-publication-ticker]").forEach(initPublicationTicker);
   }
 
+  document.querySelectorAll("[data-email-user][data-email-domain]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const user = link.getAttribute("data-email-user") || "";
+      const domain = link.getAttribute("data-email-domain") || "";
+      if (!user || !domain) return;
+      window.location.href = `mailto:${user}@${domain}`;
+    });
+  });
+
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const observer = new IntersectionObserver((entries) => {
