@@ -990,6 +990,19 @@ p {
   left: 5%;
 }
 
+.member-hex .member-portrait--bowei {
+  inset: auto;
+  width: 88%;
+  height: 88%;
+  top: 8%;
+  left: 6%;
+  object-position: center 32%;
+}
+
+.member-hex:has(.member-portrait--bowei) {
+  background: #c56a4c;
+}
+
 .member-card:hover .member-hex img {
   transform: scale(1.025);
 }
