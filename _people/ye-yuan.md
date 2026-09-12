@@ -2,7 +2,7 @@
 title: Ye Yuan
 role: Ph.D. Candidate
 institution: McGill University · Mila
-focus: Generative AI · BBO · Agents
+focus: Generative AI · Black Box Optimization · Agentic AI
 email: ye.yuan3@mail.mcgill.ca
 portrait: /assets/images/people/ye-yuan.jpg
 portrait_class: member-portrait--ye

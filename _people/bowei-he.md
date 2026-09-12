@@ -2,7 +2,7 @@
 title: Bowei He
 hex_label: BH
 role: Postdoctoral Researcher
-institution: MBZUAI · McGill
+institution: MBZUAI · McGill University
 focus: Language models · Agentic AI · Recommendation
 portrait: /assets/images/people/bowei-he.jpg
 portrait_class: member-portrait--bowei
