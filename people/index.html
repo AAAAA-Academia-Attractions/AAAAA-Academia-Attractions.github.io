@@ -20,7 +20,7 @@ nav: people
     <section class="section" aria-label="Member directory">
       {% include people-sources.html %}
       <div class="member-stack" data-member-stack aria-label="AAAAA Community members">
-        <div class="member-stack__pile">
+        <div class="member-stack__pile" data-honeycomb-board>
           {% for person in listed_people %}{% include member-card.html person=person extra_class="member-stack__member" identity_class="member-stack__identity" %}{% endfor %}
         </div>
         <aside class="member-stack__detail" data-member-detail aria-hidden="true">

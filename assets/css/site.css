@@ -802,6 +802,10 @@ p {
 }
 
 .member-stack {
+  --honey-gap: clamp(0.4rem, 1.1vw, 0.7rem);
+  --honey-hex: min(8.6rem, calc((100cqi - (var(--max-row) - 1) * var(--honey-gap)) / var(--max-row)));
+  --honey-step: calc(var(--honey-hex) + var(--honey-gap));
+  --max-row: 5;
   display: grid;
   position: relative;
   min-height: clamp(28rem, 46vw, 38rem);
@@ -817,14 +821,36 @@ p {
 }
 
 .member-stack__pile {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: min(100%, 44rem);
-  aspect-ratio: 1.48 / 1;
+  gap: 0;
+  container-type: inline-size;
+}
+
+.member-stack__row {
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  max-width: 100%;
+  gap: var(--honey-gap);
+}
+
+.member-stack__row + .member-stack__row {
+  margin-top: calc(var(--honey-hex) * -0.23);
+}
+
+.member-stack:has(.member-stack__row--offset) .member-stack__row:not(.member-stack__row--offset) {
+  transform: translateX(calc(var(--honey-step) / -4));
+}
+
+.member-stack__row--offset {
+  transform: translateX(calc(var(--honey-step) / 4));
 }
 
 .member-stack__member {
-  position: absolute;
-  width: 22%;
+  width: var(--honey-hex);
   z-index: 1;
   pointer-events: none;
 }
@@ -855,17 +881,6 @@ p {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
-
-.member-stack__member--s1 { left: 16.8%; top: 4%; }
-.member-stack__member--s2 { left: 39.3%; top: 2.5%; }
-.member-stack__member--s3 { left: 61.8%; top: 5%; }
-.member-stack__member--s4 { left: 5.4%; top: 34%; }
-.member-stack__member--s5 { left: 27.9%; top: 32%; }
-.member-stack__member--s6 { left: 50.4%; top: 35%; }
-.member-stack__member--s7 { left: 72.9%; top: 33%; }
-.member-stack__member--s8 { left: 16.8%; top: 64%; }
-.member-stack__member--s9 { left: 39.3%; top: 62.5%; }
-.member-stack__member--s10 { left: 61.8%; top: 65%; }
 
 .member-stack__detail {
   display: grid;
@@ -1859,17 +1874,15 @@ p {
   }
 
   .member-stack__pile {
-    display: grid;
-    aspect-ratio: auto;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem 1rem;
+    width: 100%;
+    gap: 1.15rem;
+  }
+
+  .member-stack__row + .member-stack__row {
+    margin-top: 0;
   }
 
   .member-stack__member {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
     pointer-events: auto;
   }
 
@@ -2075,7 +2088,7 @@ p {
   }
 
   .member-stack__pile {
-    gap: 1.6rem 0.75rem;
+    gap: 1rem;
   }
 
   .site-footer__inner {

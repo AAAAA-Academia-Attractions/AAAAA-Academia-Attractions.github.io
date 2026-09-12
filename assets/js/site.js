@@ -149,24 +149,90 @@
     });
   };
 
-  const initMemberStack = (root) => {
-    const pile = root.querySelector(".member-stack__pile");
-    const members = [...root.querySelectorAll(".member-stack__member")];
+  const honeycombRowSizes = (count, maxPerRow) => {
+    if (count <= 0) return [];
+    const rows = Math.ceil(count / maxPerRow);
+    const base = Math.floor(count / rows);
+    const extra = count % rows;
+    if (extra === 0) return Array.from({ length: rows }, () => base);
 
-    if (!pile || members.length === 0) {
+    const long = base + 1;
+    let longsLeft = extra;
+    let shortsLeft = rows - extra;
+    const startLong = longsLeft >= shortsLeft;
+    return Array.from({ length: rows }, (_, index) => {
+      const wantLong = index % 2 === 0 ? startLong : !startLong;
+      if (wantLong && longsLeft > 0) {
+        longsLeft -= 1;
+        return long;
+      }
+      if (!wantLong && shortsLeft > 0) {
+        shortsLeft -= 1;
+        return base;
+      }
+      if (longsLeft > 0) {
+        longsLeft -= 1;
+        return long;
+      }
+      shortsLeft -= 1;
+      return base;
+    });
+  };
+
+  const honeycombMaxPerRow = (width) => {
+    if (width <= 400) return 2;
+    if (width <= 700) return 3;
+    return 5;
+  };
+
+  const layoutMemberHoneycomb = (root, members, maxPerRow) => {
+    const pile = root.querySelector("[data-honeycomb-board]") || root.querySelector(".member-stack__pile");
+    if (!pile || members.length === 0) return;
+
+    const sizes = honeycombRowSizes(members.length, maxPerRow);
+    const maxRow = Math.max(...sizes);
+    let index = 0;
+    let prevSize = 0;
+    let useOffset = false;
+
+    pile.replaceChildren();
+    sizes.forEach((size) => {
+      if (prevSize === size && prevSize !== 0) useOffset = !useOffset;
+      else useOffset = false;
+
+      const row = document.createElement("div");
+      row.className = useOffset
+        ? "member-stack__row member-stack__row--offset"
+        : "member-stack__row";
+      members.slice(index, index + size).forEach((member) => row.appendChild(member));
+      pile.appendChild(row);
+
+      index += size;
+      prevSize = size;
+    });
+
+    root.style.setProperty("--max-row", String(maxRow));
+  };
+
+  const initMemberStack = (root) => {
+    const members = [...root.querySelectorAll(".member-stack__member")];
+    if (members.length === 0) {
       root.classList.add("is-ready");
       return;
     }
 
-    shuffle(members).forEach((member, index) => {
-      pile.appendChild(member);
-      [...member.classList].forEach((cls) => {
-        if (cls.startsWith("member-stack__member--s")) member.classList.remove(cls);
-      });
-      member.classList.add(`member-stack__member--s${index + 1}`);
-    });
+    const ordered = shuffle(members);
+    let currentMax = 0;
+    const render = () => {
+      const nextMax = honeycombMaxPerRow(window.innerWidth);
+      if (nextMax === currentMax && root.classList.contains("is-ready")) return;
+      currentMax = nextMax;
+      layoutMemberHoneycomb(root, ordered, nextMax);
+    };
 
-    bindMemberInspect(root, members);
+    bindMemberInspect(root, ordered);
+    render();
+    window.addEventListener("resize", render);
     root.classList.add("is-ready");
   };
 
