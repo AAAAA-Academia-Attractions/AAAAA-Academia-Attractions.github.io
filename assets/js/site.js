@@ -211,7 +211,7 @@
       const nextMax = honeycombMaxPerRow(window.innerWidth);
       if (nextMax === currentMax && root.classList.contains("is-ready")) return;
       currentMax = nextMax;
-      layoutMemberHoneycomb(root, nextMax <= 1 ? members : ordered, nextMax);
+      layoutMemberHoneycomb(root, ordered, nextMax);
     };
 
     bindMemberPairing(root);

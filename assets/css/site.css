@@ -494,9 +494,11 @@ p {
   flex: none;
 }
 
-.publication-ticker:hover .publication-ticker__track,
-.publication-ticker:focus-within .publication-ticker__track {
-  animation-play-state: paused;
+@media (hover: hover) and (pointer: fine) {
+  .publication-ticker:hover .publication-ticker__track,
+  .publication-ticker:focus-within .publication-ticker__track {
+    animation-play-state: paused;
+  }
 }
 
 .publication-ticker .publication-card {
@@ -2380,26 +2382,8 @@ p {
     grid-column: auto;
   }
 
-  .publication-ticker {
-    margin-right: 0;
-    margin-left: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-  }
-
-  .publication-ticker__track {
-    animation: none;
-  }
-
-  .publication-ticker__group + .publication-ticker__group {
-    display: none;
-  }
-
   .publication-ticker .publication-card {
-    width: min(22.5rem, 88%);
-    scroll-snap-align: start;
+    width: min(22.5rem, 82vw);
   }
 
   .research-row,
