@@ -1,5 +1,6 @@
 ---
 title: Weien (Barry) Li
+sort_name: Li, Weien
 hex_label: WL
 role: Machine Learning Scientist
 institution: Wayfair · McGill University

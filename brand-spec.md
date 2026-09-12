@@ -31,10 +31,10 @@ This file documents the shared visual system used by the public HTML pages. It i
 
 ## Page rules
 
-- Shared navigation order: Home, People, Research, Publication, Projects.
+- Shared navigation order: Home, People, Publication. The Projects catalog is hidden for now; individual published pages still live under `projects/<slug>/`.
 - Main site pages use shared files under `assets/`.
 - Every member page gets its own folder and `index.html`.
-- Research Areas use Markdown collections with shared Jekyll layouts; Jekyll generates their final HTML folders.
+- Homepage research themes are listed in `_data/research_themes.yml` and are not separate pages.
 - On-going projects use the shared Markdown template in `_projects/` and are listed under Projects.
-- Published projects are independent HTML pages in `projects/<slug>/` and may use any layout, CSS, or interaction. Only their YAML front matter is read by the Projects / Research / Publication directories.
+- Published projects are independent HTML pages in `projects/<slug>/` and may use any layout, CSS, or interaction. Only their YAML front matter is read by the Projects / Publication directories.
 - Individual pages may add local CSS and JavaScript after the shared stylesheet without changing the main site.

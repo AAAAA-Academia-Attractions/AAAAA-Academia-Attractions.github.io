@@ -1,0 +1,42 @@
+{% assign group_kind = include.kind %}
+{% assign group_count = 0 %}
+{% for project in published_projects %}
+  {% assign venue_l = project.venue | downcase | default: "" %}
+  {% assign is_preprint = false %}
+  {% if project.publication_group == "preprint" or venue_l contains "arxiv" %}
+    {% assign is_preprint = true %}
+  {% endif %}
+  {% if project.publication_group == "venue" %}
+    {% assign is_preprint = false %}
+  {% endif %}
+  {% if group_kind == "preprint" and is_preprint %}
+    {% assign group_count = group_count | plus: 1 %}
+  {% elsif group_kind == "venue" and is_preprint == false %}
+    {% assign group_count = group_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+{% if group_count > 0 %}
+<div class="publication-group">
+  <div class="section-header">
+    <p class="section-kicker">{{ include.kicker }}</p>
+    <h2 class="section-title">{{ include.title }}</h2>
+  </div>
+  <div class="publication-grid">
+    {% for project in published_projects %}
+      {% assign venue_l = project.venue | downcase | default: "" %}
+      {% assign is_preprint = false %}
+      {% if project.publication_group == "preprint" or venue_l contains "arxiv" %}
+        {% assign is_preprint = true %}
+      {% endif %}
+      {% if project.publication_group == "venue" %}
+        {% assign is_preprint = false %}
+      {% endif %}
+      {% if group_kind == "preprint" and is_preprint %}
+        {% include publication-card.html project=project %}
+      {% elsif group_kind == "venue" and is_preprint == false %}
+        {% include publication-card.html project=project %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

@@ -83,14 +83,13 @@ keywords:
         <nav class="spade-links" aria-label="Paper links">
           <a href="https://arxiv.org/abs/2605.11246" target="_blank" rel="noopener noreferrer">Paper ↗</a>
           <a href="https://github.com/HarryYoung2018/spade" target="_blank" rel="noopener noreferrer">Code ↗</a>
-          <a href="{{ '/research/bbo/' | relative_url }}">Research area ↗</a>
         </nav>
       </div>
       <aside class="detail-hero__aside">
         <dl>
           <dt>Venue</dt><dd>{{ page.venue }}</dd>
           <dt>Year</dt><dd>{{ page.year }}</dd>
-          <dt>Area</dt><dd><a class="text-link" href="{{ '/research/bbo/' | relative_url }}">BBO ↗</a></dd>
+          <dt>Area</dt><dd>{{ page.research_area }}</dd>
           <dt>Authors</dt><dd>{{ page.authors | join: ' · ' }}</dd>
         </dl>
       </aside>

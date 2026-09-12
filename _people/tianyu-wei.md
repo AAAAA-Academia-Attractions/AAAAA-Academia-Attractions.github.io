@@ -1,5 +1,6 @@
 ---
 title: Tianyu Wei
+sort_name: Wei, Tianyu
 role: PhD Student
 institution: Imperial College London
 focus: Multi-task Learning · Computational Neuroscience · Sleep Science

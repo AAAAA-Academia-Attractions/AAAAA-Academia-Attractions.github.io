@@ -1,5 +1,6 @@
 ---
 title: Yining (Frank) Kang
+sort_name: Kang, Yining
 role: Financial Engineer
 institution: Toronto, Canada
 focus: LLMs · RAG · Agentic AI

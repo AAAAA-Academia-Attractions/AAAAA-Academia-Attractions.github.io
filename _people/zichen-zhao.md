@@ -1,5 +1,6 @@
 ---
 title: Zichen (Danny) Zhao
+sort_name: Zhao, Zichen
 role: Undergraduate Student
 institution: MBZUAI
 focus: Generative Modeling · Personalization · Agentic AI

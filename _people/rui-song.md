@@ -1,5 +1,6 @@
 ---
 title: Rui Song
+sort_name: Song, Rui
 hex_label: RS
 role: M.Sc. Student
 institution: McGill University

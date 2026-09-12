@@ -1,5 +1,6 @@
 ---
 title: Haochen Liu
+sort_name: Liu, Haochen
 role: Ph.D. Student
 institution: University of Cambridge
 focus: Machine Learning and Sleep Science · Agentic AI

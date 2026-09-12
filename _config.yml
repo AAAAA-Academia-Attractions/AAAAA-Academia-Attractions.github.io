@@ -8,9 +8,6 @@ kramdown:
   input: GFM
 
 collections:
-  research:
-    output: true
-    permalink: /research/:name/
   projects:
     output: true
     permalink: /projects/:name/
@@ -19,11 +16,6 @@ collections:
     permalink: /people/:name/
 
 defaults:
-  - scope:
-      path: ""
-      type: research
-    values:
-      layout: research-area
   - scope:
       path: ""
       type: projects

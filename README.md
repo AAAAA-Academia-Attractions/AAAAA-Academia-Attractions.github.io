@@ -7,17 +7,15 @@ Shared look and feel lives in `assets/css/site.css`, `assets/js/site.js`, and `_
 ## Content model
 
 ```text
-Nav: Home · People · Research · Publication · Projects
+Nav: Home · People · Publication
 
-Research hierarchy:  main area  →  sub-area Markdown  →  projects
 Projects:            on-going `_projects/*.md`  +  published `projects/<slug>/index.html`
 People:              `_people/*.md`  →  Home / People cards  →  `/people/<slug>/`  →  optional `website`
 ```
 
 - **On-going projects** use the shared Markdown layout and URLs `/projects/<slug>/`.
-- **Published projects** are free HTML. YAML is only for directories (Projects, Research, Publication, homepage ticker).
+- **Published projects** are free HTML. YAML is only for directories (Projects, Publication, homepage ticker).
 - **People intros** are Markdown in `_people/`. Portraits always open that page. A `website` field is linked from the intro, not from the card.
-- Research area pages pull related work by `research_area_slug`.
 - Publication and the homepage ticker list pages with `status: published` and `listed: true`, newest `date` first.
 
 ## Update each section
@@ -31,7 +29,7 @@ Most page *introductions* are a short lead on that HTML page. Lists under them a
 | Eyebrow, `AAAAA Community` title, five-A line | `.hero__copy` |
 | Overview paragraph | `.hero__overview p` |
 | Latest Publication ticker | Automatic: newest 5 published pages. Cards show **year, title, venue** (no authors). |
-| Research Area accordion | Automatic from `_data/research_hierarchy.yml` |
+| Research themes | `_data/research_themes.yml` |
 | People sentences | `.people-intro` |
 
 To change ticker copy, edit the published project’s YAML (`title`, `year`, `venue`, `date`). To hide a paper from Home and Publication, set `listed: false`.
@@ -126,37 +124,9 @@ Omit `website`. Portraits still open the community intro; that page has no Perso
 
 To add a member: `_people/<slug>.md` + optional portrait + A, B, or C.
 
-### Research — `research/index.html` and `_research/`
+### Research themes — homepage
 
-| What you see | Where to edit |
-| --- | --- |
-| Directory title and lead | `research/index.html` → `.page-hero` |
-| Main areas (Algorithm, Agent, Evaluation) and sub-area links | `_data/research_hierarchy.yml` |
-| Sub-area introduction | `_research/<slug>.md` |
-
-A sub-area page is Markdown. Front matter is the short intro; the body is the long introduction:
-
-```yaml
-title: Social Deduction
-nav: research
-parent_area: Evaluation
-summary: One or two sentences shown under the title.
-keywords:
-  - Keyword
-```
-
-```markdown
-## Research introduction
-## Current direction
-```
-
-Related projects appear when an on-going or published project uses the same `research_area_slug` as the file name (`social-deduction.md` → `research_area_slug: social-deduction`).
-
-**Add a sub-area**
-
-1. Add it under the right main area in `_data/research_hierarchy.yml`.
-2. Copy `_research/area-template.md` to `_research/your-slug.md`.
-3. Fill title, parent, summary, keywords, and the two Markdown sections.
+The six homepage themes live in `_data/research_themes.yml`. Each item needs `id`, `title`, `lead`, and `summary`. They are not linked to separate pages.
 
 ### Publication — `publication/index.html`
 
@@ -164,6 +134,8 @@ Related projects appear when an on-going or published project uses the same `res
 | --- | --- |
 | Directory title and lead | `.page-hero` |
 | Paper cards | Automatic from published YAML. Cards show **year, title, venue, keywords** (same format as Home). |
+
+Papers split into **Conferences & Journals & Workshops** and **arXiv Preprint**. A venue containing `arXiv` goes to preprints; set `publication_group: venue` or `publication_group: preprint` to override.
 
 There is no separate publication database. Add or edit `projects/<slug>/index.html` instead.
 
@@ -229,18 +201,20 @@ authors:
 members:
   - Community member on the card
 venue: EMNLP 2026 Main Conference
+publication_group: venue
 keywords:
   - Keyword
 ```
 
 | Field | Used by |
 | --- | --- |
-| `listed: true` | Home ticker, Publication, Projects catalog, Research related work |
+| `listed: true` | Home ticker, Publication, Projects catalog |
 | `date` | Sort order (newest first) |
 | `year` | Card year label |
 | `venue` | Ticker (venue only) and Publication cards |
+| `publication_group` | Optional. `preprint` or `venue`. If omitted, a venue containing `arXiv` is treated as a preprint |
 | `authors` / `members` | Publication cards and project cards |
-| `research_area_slug` | Research area page and Projects area filter |
+| `research_area_slug` | Projects area filter |
 
 Set `listed: false` for drafts and templates.
 

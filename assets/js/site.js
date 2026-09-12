@@ -73,34 +73,6 @@
     updateDemo();
   }
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  const initResearchCluster = (cluster) => {
-    const summary = cluster.querySelector("summary");
-    const panel = cluster.querySelector(".research-cluster__panel");
-    if (!summary || !panel || reduceMotion) return;
-
-    if (!panel.querySelector(":scope > .research-cluster__panel-inner")) {
-      const inner = document.createElement("div");
-      inner.className = "research-cluster__panel-inner";
-      while (panel.firstChild) inner.appendChild(panel.firstChild);
-      panel.appendChild(inner);
-    }
-
-    cluster.classList.add("is-animated");
-    cluster.open = true;
-    summary.setAttribute("aria-expanded", "false");
-
-    summary.addEventListener("click", (event) => {
-      event.preventDefault();
-      const next = !cluster.classList.contains("is-expanded");
-      cluster.classList.toggle("is-expanded", next);
-      summary.setAttribute("aria-expanded", String(next));
-    });
-  };
-
-  document.querySelectorAll(".research-cluster").forEach(initResearchCluster);
-
   const shuffle = (items) => {
     const copy = [...items];
     for (let index = copy.length - 1; index > 0; index -= 1) {
@@ -108,45 +80,6 @@
       [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
     }
     return copy;
-  };
-
-  const bindMemberInspect = (root, members) => {
-    const detail = root.querySelector("[data-member-detail]");
-    const detailHex = root.querySelector("[data-member-detail-hex]");
-    const detailName = root.querySelector("[data-member-detail-name]");
-    const detailMeta = root.querySelector("[data-member-detail-meta]");
-
-    const inspectMember = (member) => {
-      if (!detail || !detailHex || !detailName || !detailMeta) return;
-      const hex = member.querySelector(".member-hex");
-      const heading = member.querySelector("h3");
-      const meta = member.querySelector(".member-card__meta");
-      const headingCopy = heading ? heading.cloneNode(true) : null;
-      headingCopy?.querySelector(".member-card__external")?.remove();
-
-      detailHex.replaceChildren();
-      if (hex) detailHex.innerHTML = hex.innerHTML;
-      detailName.textContent = headingCopy?.textContent.trim() || "";
-      detailMeta.replaceChildren();
-      if (meta) detailMeta.append(...[...meta.children].map((node) => node.cloneNode(true)));
-
-      root.classList.add("is-inspecting");
-      detail.setAttribute("aria-hidden", "false");
-    };
-
-    const clearInspection = () => {
-      root.classList.remove("is-inspecting");
-      if (detail) detail.setAttribute("aria-hidden", "true");
-    };
-
-    members.forEach((member) => {
-      const hex = member.querySelector(".member-hex");
-      if (!hex) return;
-      hex.addEventListener("pointerenter", () => inspectMember(member));
-      hex.addEventListener("pointerleave", clearInspection);
-      member.addEventListener("focus", () => inspectMember(member));
-      member.addEventListener("blur", clearInspection);
-    });
   };
 
   const honeycombRowSizes = (count, maxPerRow) => {
@@ -179,15 +112,23 @@
     });
   };
 
+  const MEMBER_LIST_MAX_WIDTH = 896;
+
   const honeycombMaxPerRow = (width) => {
-    if (width <= 400) return 2;
-    if (width <= 700) return 3;
+    if (width <= MEMBER_LIST_MAX_WIDTH) return 1;
+    if (width <= 1100) return 3;
     return 5;
   };
 
   const layoutMemberHoneycomb = (root, members, maxPerRow) => {
     const pile = root.querySelector("[data-honeycomb-board]") || root.querySelector(".member-stack__pile");
     if (!pile || members.length === 0) return;
+
+    if (maxPerRow <= 1) {
+      pile.replaceChildren(...members);
+      root.style.setProperty("--max-row", "1");
+      return;
+    }
 
     const sizes = honeycombRowSizes(members.length, maxPerRow);
     const maxRow = Math.max(...sizes);
@@ -214,6 +155,49 @@
     root.style.setProperty("--max-row", String(maxRow));
   };
 
+  const bindMemberPairing = (root) => {
+    let activeSlug = "";
+
+    const apply = (slug) => {
+      activeSlug = slug;
+      root.classList.toggle("is-pairing", Boolean(slug));
+      root.querySelectorAll("[data-member]").forEach((el) => {
+        el.classList.toggle("is-paired", Boolean(slug) && el.getAttribute("data-member") === slug);
+      });
+    };
+
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    root.querySelectorAll(".member-stack__member[data-member]").forEach((member) => {
+      const slug = member.getAttribute("data-member");
+      const hex = member.querySelector(".member-hex") || member;
+      if (canHover) {
+        hex.addEventListener("mouseenter", () => apply(slug));
+        hex.addEventListener("mouseleave", () => {
+          if (activeSlug === slug) apply("");
+        });
+      }
+      member.addEventListener("focusin", () => apply(slug));
+      member.addEventListener("focusout", () => {
+        if (activeSlug === slug) apply("");
+      });
+    });
+
+    root.querySelectorAll(".member-org [data-member]").forEach((link) => {
+      const slug = link.getAttribute("data-member");
+      if (canHover) {
+        link.addEventListener("mouseenter", () => apply(slug));
+        link.addEventListener("mouseleave", () => {
+          if (activeSlug === slug) apply("");
+        });
+      }
+      link.addEventListener("focusin", () => apply(slug));
+      link.addEventListener("focusout", () => {
+        if (activeSlug === slug) apply("");
+      });
+    });
+  };
+
   const initMemberStack = (root) => {
     const members = [...root.querySelectorAll(".member-stack__member")];
     if (members.length === 0) {
@@ -227,10 +211,10 @@
       const nextMax = honeycombMaxPerRow(window.innerWidth);
       if (nextMax === currentMax && root.classList.contains("is-ready")) return;
       currentMax = nextMax;
-      layoutMemberHoneycomb(root, ordered, nextMax);
+      layoutMemberHoneycomb(root, nextMax <= 1 ? members : ordered, nextMax);
     };
 
-    bindMemberInspect(root, ordered);
+    bindMemberPairing(root);
     render();
     window.addEventListener("resize", render);
     root.classList.add("is-ready");

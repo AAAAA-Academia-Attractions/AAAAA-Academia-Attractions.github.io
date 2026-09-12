@@ -1,5 +1,6 @@
 ---
 title: Zhengxi Li
+sort_name: Li, Zhengxi
 role: Undergraduate Student
 institution: MBZUAI
 focus: Efficient Reasoning · Data Synthesis

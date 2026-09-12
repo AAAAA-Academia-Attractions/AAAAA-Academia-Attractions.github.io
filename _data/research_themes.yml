@@ -1,0 +1,29 @@
+- id: "01"
+  title: Generative Models for Offline Black-Box Optimization
+  lead: Ye Yuan
+  summary: Diffusion, flow, and diffusion language models for design search on a static dataset, including calibrated estimation, support-proximity regularization, multi-objective guided flows, and settings where labels or experiments are expensive.
+
+- id: "02"
+  title: Agentic Reasoning, Search, and Policy Optimization
+  lead: Bowei He
+  summary: Benchmarks, training methods, and runtime frameworks for language agents that retrieve evidence, use tools, and learn from process-level rewards, including search-integrated reasoning, branching policy optimization, and scaling from one device to collective systems.
+
+- id: "03"
+  title: Trustworthy Alignment and Learning from Human Feedback
+  lead: Haolun Wu
+  summary: Aligning single models and compound AI systems with human preferences, including system-level direct preference optimization, logit-only adaptation of closed models, internal-representation safeguards, and human-centered control of model behavior.
+
+- id: "04"
+  title: Personalized Retrieval and Human-centered Information Access
+  lead: Haolun Wu
+  summary: Representing evolving user interests and keeping retrieved content scrutable, including density-based user modeling, retrieval-augmented personalization, interpretable preference heads, and diversification in search and recommendation.
+
+- id: "05"
+  title: LLM-enhanced Recommendation, RAG, and Structured Understanding
+  lead: Bowei He
+  summary: Language models as rankers and sequential recommenders, grounded in entities, tables, and retrieved documents. This includes mutual augmentation between recommenders and LLMs, context-aware contrastive learning, embedding-based reranking, agentic table summarization, and retrieval-augmented generation.
+
+- id: "06"
+  title: Multimodal Understanding and Generation
+  lead: Ye Yuan
+  summary: Vision-language models and generative systems that read and produce across text, images, documents, and other discrete modalities, including multimodal retrieval, grounded multimodal agents, and diffusion models that move from tokenization through generation.

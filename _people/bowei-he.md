@@ -1,5 +1,6 @@
 ---
 title: Bowei He
+sort_name: He, Bowei
 hex_label: BH
 role: Postdoctoral Researcher
 institution: MBZUAI · McGill University
@@ -11,6 +12,8 @@ linkedin: https://www.linkedin.com/in/bowei-he-8a9450199/
 github: https://github.com/hebowei2000
 listed: true
 homepage: false
+org_role: research-lead
+org_order: 3
 ---
 
 Bowei He is a postdoctoral researcher at MBZUAI and McGill University. He received his Ph.D. in Computer Science from the City University of Hong Kong in 2025, supervised by Prof. Chen Ma. His dissertation studied how recommendation models can adapt their structure, representations, and data utility as users and items change over time.

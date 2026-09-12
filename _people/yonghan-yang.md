@@ -1,5 +1,6 @@
 ---
 title: Yonghan (Harry) Yang
+sort_name: Yang, Yonghan
 role: Undergraduate Student
 institution: MBZUAI
 focus: Generative Modeling · AI for Science · Agentic AI

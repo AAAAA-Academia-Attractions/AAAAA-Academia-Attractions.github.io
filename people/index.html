@@ -16,20 +16,33 @@ nav: people
 <body>
   {% include site-header.html %}
   <main class="page-shell" id="main-content">
-    <header class="page-hero"><div><p class="eyebrow">The community</p><h1 class="page-title">People</h1></div><p class="page-lead">"None of us is as smart as all of us." <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;— Ken Blanchard</p></header>
+    <header class="page-hero">
+      <div>
+        <p class="eyebrow">The community</p>
+        <h1 class="page-title">People</h1>
+      </div>
+      <p class="page-lead people-quote"><span>“None of us is as smart as all of us.”</span><cite>— Ken Blanchard</cite></p>
+    </header>
     <section class="section" aria-label="Member directory">
       {% include people-sources.html %}
       <div class="member-stack" data-member-stack aria-label="AAAAA Community members">
         <div class="member-stack__pile" data-honeycomb-board>
           {% for person in listed_people %}{% include member-card.html person=person extra_class="member-stack__member" identity_class="member-stack__identity" %}{% endfor %}
         </div>
-        <aside class="member-stack__detail" data-member-detail aria-hidden="true">
-          <p class="member-stack__hint">Hover a portrait</p>
-          <div class="member-stack__detail-body">
-            <div class="member-hex" data-member-detail-hex></div>
-            <h3 data-member-detail-name></h3>
-            <ul class="member-card__meta" data-member-detail-meta></ul>
-          </div>
+        <aside class="member-org" aria-label="Organization">
+          <p class="member-org__kicker">Organization <span>A–Z by last name</span></p>
+          <section class="member-org__layer">
+            <h2>Research Leads</h2>
+            <ul class="member-org__leads">
+              {% for person in research_leads %}<li><a href="{{ person.url | relative_url }}" data-member="{{ person.slug }}">{{ person.title }}</a></li>{% endfor %}
+            </ul>
+          </section>
+          <section class="member-org__layer">
+            <h2>Researchers</h2>
+            <ul class="member-org__researchers" style="--org-rows: {{ researchers.size | plus: 1 | divided_by: 2 }}">
+              {% for person in researchers %}<li><a href="{{ person.url | relative_url }}" data-member="{{ person.slug }}">{{ person.title }}</a></li>{% endfor %}
+            </ul>
+          </section>
         </aside>
       </div>
     </section>

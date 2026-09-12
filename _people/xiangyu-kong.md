@@ -1,5 +1,6 @@
 ---
 title: Xiangyu (Daniel) Kong
+sort_name: Kong, Xiangyu
 role: Research Engineer
 institution: RBC Borealis
 focus: Information Retrieval · Agentic AI · Computer Graphics

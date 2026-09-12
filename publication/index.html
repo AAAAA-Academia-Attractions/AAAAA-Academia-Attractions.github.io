@@ -16,20 +16,19 @@ nav: publication
 <body>
   {% include site-header.html %}
   <main class="page-shell" id="main-content">
-    <header class="page-hero"><div><p class="eyebrow">Papers · Venues · Demos</p><h1 class="page-title">Publication</h1></div><p class="page-lead">Published projects from the community directory. Click the card and see the details.</p></header>
+    <header class="page-hero"><div><p class="eyebrow">Papers · Venues · Demos</p><h1 class="page-title">Publication</h1></div><p class="page-lead">Published projects from the community directory, grouped by venue. Click the card and see the details.</p></header>
     <section class="section section--pine" aria-label="Publication directory">
       {% include project-sources.html %}
+      {% include publication-group.html kind="venue" kicker="01 / Venues" title="Conferences & Journals & Workshops" %}
+      {% include publication-group.html kind="preprint" kicker="02 / Preprints" title="arXiv Preprint" %}
+      {% if published_projects.size == 0 %}
       <div class="publication-grid">
-        {% for project in published_projects %}
-        {% include publication-card.html project=project %}
-        {% endfor %}
-        {% if published_projects.size == 0 %}
         <div class="project-empty-state">
           <p>No published projects yet.</p>
           <span>Add a free-form HTML page in <code>projects/&lt;slug&gt;/index.html</code> with <code>status: published</code>.</span>
         </div>
-        {% endif %}
       </div>
+      {% endif %}
     </section>
   </main>
   {% include site-footer.html %}

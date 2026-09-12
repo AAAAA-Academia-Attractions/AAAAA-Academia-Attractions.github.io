@@ -1,1 +1,3 @@
-{% assign listed_people = site.people | where: "listed", true %}
+{% assign listed_people = site.people | where: "listed", true | sort: "sort_name" %}
+{% assign research_leads = listed_people | where: "org_role", "research-lead" | sort: "sort_name" %}
+{% assign researchers = listed_people | where_exp: "person", "person.org_role != 'research-lead'" | sort: "sort_name" %}

@@ -1,5 +1,6 @@
 ---
 title: Zeyu Li
+sort_name: Li, Zeyu
 role: Ph.D. Student
 institution: Wuhan University
 focus: Agentic AI · Event Cameras · Multimodal Intelligence

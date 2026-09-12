@@ -1,5 +1,6 @@
 ---
 title: Zixuan (Olivia) Dong
+sort_name: Dong, Zixuan
 role: AI Engineer
 institution: Next Pathway
 focus: Agentic AI · Data Science · AI in Healthcare
