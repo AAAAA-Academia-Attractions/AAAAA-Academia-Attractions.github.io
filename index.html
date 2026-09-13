@@ -92,12 +92,15 @@ nav: home
       <div class="section-header reveal">
         <p class="section-kicker">03 / The community</p>
         <h2 class="section-title" id="people-title">People</h2>
-        <a class="section-link" href="{{ '/people/' | relative_url }}">Meet the researchers <span aria-hidden="true">↗</span></a>
+        <div class="section-links">
+          <a class="section-link" href="{{ '/people/' | relative_url }}">Meet the researchers <span aria-hidden="true">↗</span></a>
+          <a class="section-link" href="{{ '/join/' | relative_url }}">Join us <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
       <div class="people-intro reveal">
         <p>AAAAA Community is a research collective spanning universities, labs, and industry. Members work at or have trained at McGill University, Mila, MBZUAI, MIT, the University of Cambridge, Imperial College London, City University of Hong Kong, and more, as well as at places such as Salesforce, RBC Borealis, Wayfair, and Next Pathway.</p>
         <p>The group includes undergraduates, graduate students, postdoctoral researchers, and engineers. Together they study generative models, agentic systems, retrieval, alignment, and multimodal intelligence, and carry that work into production systems.</p>
-        <p><a href="{{ '/people/' | relative_url }}">Meet our researchers</a>, building advanced, analytical and adaptive intelligence together.</p>
+        <p><a href="{{ '/people/' | relative_url }}">Meet our researchers</a>, and <a href="{{ '/join/#researcher' | relative_url }}">Welcome to join us</a>, to build advanced, analytical and adaptive intelligence together.</p>
       </div>
     </section>
 
@@ -105,6 +108,7 @@ nav: home
       <div class="section-header reveal">
         <p class="section-kicker">04 / Support</p>
         <h2 class="section-title section-title--support" id="support-title">Technology &amp; Community Support</h2>
+        <a class="section-link" href="{{ '/join/' | relative_url }}">Join us <span aria-hidden="true">↗</span></a>
       </div>
       <div class="support-panel reveal">
         <ul class="support-list">
@@ -112,6 +116,7 @@ nav: home
           <li>{{ supporter.name }}</li>
           {% endfor %}
         </ul>
+        <p class="support-invite"><a href="{{ '/join/#supporter' | relative_url }}">Welcome to join us</a></p>
         <p class="support-note">Our community has received credits, resources, or program support from the organizations shown above. Inclusion does not imply formal endorsement or affiliation unless otherwise stated.</p>
       </div>
     </section>

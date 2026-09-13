@@ -387,6 +387,18 @@ p {
   letter-spacing: 0.06em;
 }
 
+.section-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: 0.2rem 1.15rem;
+}
+
+.section-links .section-link {
+  justify-self: auto;
+}
+
 .section-link span {
   display: inline-block;
   margin-left: 0.45rem;
@@ -842,10 +854,6 @@ p {
   line-height: 1.28;
 }
 
-.people-intro p:last-child {
-  white-space: nowrap;
-}
-
 .people-intro a {
   color: var(--pine);
   text-decoration: underline;
@@ -893,6 +901,74 @@ p {
 
 .support-list li:last-child {
   border-right: 0;
+}
+
+.support-invite {
+  margin: 1.35rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2.05vw, 1.65rem);
+  letter-spacing: -0.03em;
+  line-height: 1.28;
+  text-align: center;
+}
+
+.support-invite a {
+  color: var(--pine);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.support-invite a:hover {
+  color: var(--brass);
+}
+
+.join-lead {
+  max-width: 42rem;
+  margin: 1.35rem auto 0;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.join-cta {
+  margin: 1.15rem auto 0;
+  text-align: center;
+}
+
+.join-cta a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  color: var(--pine);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.join-cta a:hover {
+  color: var(--brass);
+}
+
+.join-cta span {
+  display: inline-block;
+  margin-left: 0.45rem;
+  transition: transform 180ms var(--ease);
+}
+
+.join-cta a:hover span {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+#researcher,
+#supporter {
+  scroll-margin-top: 1.25rem;
 }
 
 .support-note {
@@ -2334,10 +2410,6 @@ p {
     font-size: clamp(1.05rem, 3.6vw, 1.45rem);
   }
 
-  .people-intro p:last-child {
-    white-space: normal;
-  }
-
   .publication-grid {
     grid-template-columns: 1fr;
   }
@@ -2362,6 +2434,15 @@ p {
     margin-top: 1.15rem;
     padding-top: 0.75rem;
     font-size: 0.88rem;
+    text-align: left;
+  }
+
+  .support-invite {
+    text-align: left;
+  }
+
+  .join-lead,
+  .join-cta {
     text-align: left;
   }
 

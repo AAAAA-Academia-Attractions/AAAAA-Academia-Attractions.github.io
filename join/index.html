@@ -1,0 +1,47 @@
+---
+layout: null
+nav: join
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Join AAAAA Community as a researcher or supporter.">
+  <title>Join us — AAAAA Community</title>
+  {% include head-icons.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+</head>
+<body>
+  {% include site-header.html %}
+  <main class="page-shell" id="main-content">
+    <header class="page-hero">
+      <div>
+        <p class="eyebrow">The community</p>
+        <h1 class="page-title">Join us</h1>
+      </div>
+      <p class="page-lead">Researchers and supporting organizations both keep this community going. Choose a path below.</p>
+    </header>
+
+    <section class="section" id="researcher" aria-labelledby="join-researcher-title">
+      <div class="section-header">
+        <p class="section-kicker">01 / Researchers</p>
+        <h2 class="section-title section-title--support" id="join-researcher-title">Join us and become a researcher</h2>
+      </div>
+      <p class="join-lead">If you want to research with AAAAA, tell us who you are and how we can help you to reach your goal. We read every application and follow up when there is a fit.</p>
+      <p class="join-cta"><a href="{{ site.data.join.researcher_form }}" target="_blank" rel="noopener noreferrer">Open the researcher form <span aria-hidden="true">↗</span></a></p>
+    </section>
+
+    <section class="section section--mist" id="supporter" aria-labelledby="join-supporter-title">
+      <div class="section-header">
+        <p class="section-kicker">02 / Supporters</p>
+        <h2 class="section-title section-title--support" id="join-supporter-title">Join us and become a supporter</h2>
+      </div>
+      <p class="join-lead">If your organization can offer compute, credits, or program support, we would like to hear from you. A short note is enough to start the conversation.</p>
+      <p class="join-cta"><a href="{{ site.data.join.supporter_form }}" target="_blank" rel="noopener noreferrer">Open the supporter form <span aria-hidden="true">↗</span></a></p>
+    </section>
+  </main>
+  {% include site-footer.html %}
+</body>
+</html>
