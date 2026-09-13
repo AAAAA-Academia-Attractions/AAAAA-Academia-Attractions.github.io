@@ -27,3 +27,13 @@
   title: Multimodal Understanding and Generation
   lead: Ye Yuan
   summary: Vision-language models and generative systems that read and produce across text, images, documents, and other discrete modalities, including multimodal retrieval, grounded multimodal agents, and diffusion models that move from tokenization through generation.
+
+- id: "07"
+  title: Computer-Using Agents and Interactive Environment Grounding
+  lead: Jikun Kang
+  summary: Autonomous agents operating directly across digital and desktop environments through multimodal perception, action space synthesis, and trajectory-level planning. This includes computer-using agents (CUAs), UI navigation, tool use, and learning grounded behavioral policies for complex interactive tasks.
+
+- id: "08"
+  title: Agent Memory Architectures and Reinforcement Learning
+  lead: Jikun Kang
+  summary: Stateful long-horizon memory representations, policy optimization, and rigorous evaluation harnesses for compound agentic systems. This includes episodic and working-memory routing, sample-efficient reinforcement learning, trajectory-level auditing, multi-step credit assignment, and life-long adaptation in open-ended dynamic environments.
