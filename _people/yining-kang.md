@@ -2,7 +2,7 @@
 title: Yining (Frank) Kang
 sort_name: Kang, Yining
 role: Financial Engineer
-institution: Toronto, Canada
+institution: CPP Investments · Imperial College London
 focus: LLMs · RAG · Agentic AI
 email: kynkangyining@gmail.com
 portrait: /assets/images/people/yining-kang.jpg

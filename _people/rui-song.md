@@ -3,7 +3,7 @@ title: Rui Song
 sort_name: Song, Rui
 hex_label: RS
 role: M.Sc. Student
-institution: McGill University
+institution: McGill University · University of Toronto
 focus: Information retrieval · LLM agents · Data systems
 email: rui.song@mail.mcgill.ca
 portrait: /assets/images/people/rui-song.jpg
