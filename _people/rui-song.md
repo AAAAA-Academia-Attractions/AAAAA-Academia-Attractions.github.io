@@ -10,6 +10,7 @@ portrait: /assets/images/people/rui-song.jpg
 portrait_class: member-portrait--rui
 scholar: https://scholar.google.ca/citations?user=HGS7IJ4AAAAJ&hl=en
 linkedin: https://www.linkedin.com/in/rui-song-636b671b2/
+github: https://github.com/wdrdg
 resume: /assets/pdf/rui-song-resume.pdf
 website: /people/rui-song/site/
 listed: true
