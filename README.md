@@ -1,6 +1,6 @@
-# AAAAA Community website
+# New Ground AI website
 
-GitHub Pages site for AAAAA Community: **Advanced · Analytical · Adaptive · Adventurous · Aspiring**.
+GitHub Pages site for New Ground AI: **Advanced · Analytical · Adaptive · Adventurous · Aspiring**.
 
 Shared look and feel lives in `assets/css/site.css`, `assets/js/site.js`, and `_includes/`. Visual tokens are documented in `brand-spec.md`.
 
@@ -26,7 +26,7 @@ Most page *introductions* are a short lead on that HTML page. Lists under them a
 
 | What you see | Where to edit |
 | --- | --- |
-| Eyebrow, `AAAAA Community` title, five-A line | `.hero__copy` |
+| Eyebrow, `New Ground AI` title, five-A line | `.hero__copy` |
 | Overview paragraph | `.hero__overview p` |
 | Latest Publication ticker | Automatic: newest 5 published pages. Cards show **year, title, venue** (no authors). |
 | Research themes | `_data/research_themes.yml` |

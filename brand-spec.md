@@ -1,10 +1,10 @@
-# AAAAA Community brand specification
+# New Ground AI brand specification
 
 This file documents the shared visual system used by the public HTML pages. It is project documentation, not a website content page.
 
 ## Identity
 
-- Wordmark: `AAAAA Community`, paired with the circular emblem in `assets/images/brand/aaaaa-community.png`.
+- Wordmark: `New Ground AI`. `New Ground` is mark ink `#1D2635`, `A` is `#12432E`, and `I` is `#C2A967`. The emblem is `assets/images/brand/new-ground-ai.png`.
 - Full line: `Advanced · Analytical · Adaptive · Adventurous · Aspiring`.
 - Tone: academic, editorial, precise, and quietly experimental.
 
@@ -19,12 +19,13 @@ This file documents the shared visual system used by the public HTML pages. It i
 
 ## Typography
 
+- Wordmark: Montserrat Bold (weight 700) on the homepage title and in the header.
 - Interface and body: Manrope, weights 400 and 500.
 - Display and long-form editorial text: Newsreader, optical size axis enabled.
 
 ## Asset status
 
-- Official logo: `assets/images/brand/aaaaa-community.png`, with favicon variants in `assets/images/brand/favicon.png`, `assets/apple-touch-icon.png`, and `favicon.ico`.
+- Official logo: `assets/images/brand/new-ground-ai.png`, with favicon variants in `assets/images/brand/favicon.png`, `assets/apple-touch-icon.png`, and `favicon.ico`.
 - Ye Yuan portrait: `assets/images/people/ye-yuan.jpg`, sourced from his official personal website (`https://stevenyuan666.github.io/assets/img/profile_photo.jpg`).
 - Remaining member portraits: pending. Their cards use explicit portrait placeholders until real images are added.
 - Publication/project media: pending. Project pages include honest demo and media slots.
